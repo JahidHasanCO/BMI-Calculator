@@ -1,18 +1,178 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <data>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity"
+        android:background="@color/backgroundColorAdditional"
+        >
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:fontFamily="@font/larsseit_bold"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="@string/app_name"
+            android:background="@color/backgroundColor"
+            android:textColor="@color/textColor"
+            android:textSize="22sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+<!--    main container    -->
+        <LinearLayout
+            android:id="@+id/bodyContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView">
+
+<!--            gender and weight container-->
+            <LinearLayout
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                >
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="GENDER"
+                        android:textColor="@color/textColor"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/larsseit_medium"
+                        />
+
+                    <com.sccomponents.gauges.library.ScArcGauge
+                        android:id="@+id/gender_meter"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:sccStrokeColor="#00000000"
+                        app:sccStrokeWidth="1dip"
+                        app:sccNotches="3"
+                        app:sccNotchesColor="@color/primaryColor"
+                        app:sccNotchesHeight="10dp"
+                        app:sccNotchesWidth="10dip"
+                        app:sccAngleSweep="-180"
+                        android:layout_gravity="center"
+                        android:paddingBottom="20dp"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="10dp"
+                        android:paddingRight="10dp"/>
+
+                </LinearLayout>
+<!--                <com.sccomponents.gauges.library.ScArcGauge-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:maxLength="100"-->
+
+
+<!--            Weight Container        />-->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/rounded_dash_main"
+                    >
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:gravity="center"
+                        android:paddingBottom="10dp"
+                        >
+
+                        <TextView
+                            android:gravity="bottom"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="WEIGHT"
+                            android:textColor="@color/textColor"
+                            android:textSize="20sp"
+                            android:fontFamily="@font/larsseit_medium"
+                            />
+                        <TextView
+                            android:gravity="bottom"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="(KG)"
+                            android:paddingBottom="2.1dp"
+                            android:textColor="@color/textColorAdditional"
+                            android:textSize="12sp"
+                            android:fontFamily="@font/larsseit_medium"
+                            />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_marginTop="30dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:background="@drawable/rounded_dash"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        >
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/weightRecyclerBtn"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:clipToPadding="false"
+                            android:paddingStart="40dp"
+                            android:paddingEnd="40dp"
+                            app:layout_constraintTop_toBottomOf="@+id/bodyContainer" />
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:src="@drawable/ic_baseline_expand_less_24"
+                        android:scaleType="fitCenter"
+                        android:layout_marginBottom="10dp"
+                        />
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+<!--            Height Container-->
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

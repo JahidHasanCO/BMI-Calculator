@@ -5,7 +5,8 @@
 
     <color name="primaryColor">#4D7CF2</color>
     <color name="backgroundColor">#FFFFFF</color>
-    <color name="backgroundColorAdditional">#D5D7D8</color>
+    <color name="backgroundColorAdditional">#F6F6F6</color>
+    <color name="backgroundColorAdditional2">#F9F9F9</color>
     <color name="textColor">#151E2B</color>
     <color name="textColorAdditional">#343E45</color>
 
