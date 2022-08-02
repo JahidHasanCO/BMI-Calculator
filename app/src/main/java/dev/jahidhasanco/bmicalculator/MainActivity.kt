@@ -22,7 +22,8 @@ class MainActivity : AppCompatActivity() {
     val _binding get() = binding
 
     lateinit var weightAdapter: WeightPickerAdapter
-
+    var gender = 'M'
+    var height = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,11 +42,7 @@ class MainActivity : AppCompatActivity() {
             focusedIndex = 2
         }
         _binding.genderWheelView.selectListener = {
-            Toast.makeText(
-                this@MainActivity,
-                "Click on WheelView" + titlesofGender[it],
-                Toast.LENGTH_SHORT
-            ).show()
+           gender
         }
 
 
@@ -55,7 +52,9 @@ class MainActivity : AppCompatActivity() {
             isChangeAlpha = true
             scaleDownBy = 0.99f
             scaleDownDistance = 0.8f
-            initialPrefetchItemCount = 10
+            initialPrefetchItemCount = 3
+            isSmoothScrollbarEnabled = true
+            scrollToPosition(6)
         }
 
 
@@ -63,8 +62,6 @@ class MainActivity : AppCompatActivity() {
         snapHelper.attachToRecyclerView(_binding.weightRecyclerBtn)
 
         weightAdapter = WeightPickerAdapter(this, getData(101), _binding.weightRecyclerBtn)
-        _binding.weightRecyclerBtn.scrollBy(10, 0);
-
 
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -91,7 +88,8 @@ class MainActivity : AppCompatActivity() {
 //        Height
         _binding.heightWheel.onWheelChangedListener =
             OnWheelChangedListener { view, oldIndex, newIndex ->
-                val text = view.getItem(newIndex)
+//                val text = view.getItem(newIndex)
+//                Toast.makeText(this,""+ text,Toast.LENGTH_SHORT).show()
             }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -100,8 +98,12 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        _binding.startButton.setOnClickListener {
+
+        }
 
     }
+
 
     fun getData(count: Int): List<String> {
         val data: MutableList<String> = ArrayList()
@@ -110,6 +112,7 @@ class MainActivity : AppCompatActivity() {
         }
         return data
     }
+
 
 
 }

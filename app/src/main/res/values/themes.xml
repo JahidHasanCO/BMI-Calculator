@@ -15,4 +15,11 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="AppTheme.ButtonStyle" parent="Widget.AppCompat.Button.Borderless">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:background">@drawable/round_button_blue</item>
+    </style>
+
 </resources>

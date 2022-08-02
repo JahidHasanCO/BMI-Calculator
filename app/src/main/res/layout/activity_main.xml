@@ -13,6 +13,8 @@
         android:background="@color/backgroundColorAdditional"
         tools:context=".MainActivity">
 
+
+
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
@@ -48,227 +50,257 @@
 
 <!--        </LinearLayout>-->
 
-        <!--    main container    -->
-        <LinearLayout
-            android:id="@+id/bodyContainer"
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_height="0dp"
             app:layout_constraintTop_toBottomOf="@+id/textView">
 
-            <!--            gender and weight container-->
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginStart="4dp"
-                android:layout_marginEnd="2dp"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/rounded_dash_main"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:fontFamily="@font/larsseit_medium"
-                        android:gravity="center"
-                        android:text="GENDER"
-                        android:textColor="@color/textColor"
-                        android:textSize="20sp" />
-
-                    <me.sujanpoudel.wheelview.WheelView
-                        android:id="@+id/gender_wheel_view"
-                        android:layout_width="match_parent"
-                        android:layout_height="160dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
-                        android:elevation="1dp"
-                        app:wheelAnchorAngle="270"
-                        app:wheelAnimationDuration="800"
-                        app:wheelArcBackgroundColor="@color/backgroundColorAdditional2"
-                        app:wheelCenterIcon="@drawable/ic_user"
-                        app:wheelCenterIconPadding="1dp"
-                        app:wheelCenterIconTint="@color/white"
-                        app:wheelDividerStrokeWidth="4dp"
-                        app:wheelMode="ANIMATE_TO_ANCHOR"
-                        app:wheelSelectedArcBackgroundColor="@color/primaryColor"
-                        app:wheelSelectedTextColor="@color/white"
-                        app:wheelStartAngle="315"
-                        app:wheelTextColor="#000000"
-                        app:wheelTextSize="14sp"
-
-                        />
-
-                </LinearLayout>
-                <!--                <com.sccomponents.gauges.library.ScArcGauge-->
-                <!--                    android:layout_width="match_parent"-->
-                <!--                    android:layout_height="match_parent"-->
-                <!--                    android:maxLength="100"-->
-
-
-                <!--            Weight Container        />-->
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:background="@drawable/rounded_dash_main"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:gravity="center"
-                        android:orientation="horizontal"
-                        android:paddingBottom="10dp">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:fontFamily="@font/larsseit_medium"
-                            android:gravity="bottom"
-                            android:text="WEIGHT"
-                            android:textColor="@color/textColor"
-                            android:textSize="20sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:fontFamily="@font/larsseit_medium"
-                            android:gravity="bottom"
-                            android:paddingBottom="3.4dp"
-                            android:text="(KG)"
-                            android:textColor="@color/textColorAdditional"
-                            android:textSize="8sp" />
-
-                    </LinearLayout>
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="30dp"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginBottom="20dp"
-                        android:background="@drawable/rounded_dash"
-                        android:orientation="vertical">
-
-
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/weightRecyclerBtn"
-                            android:layout_width="match_parent"
-                            android:layout_height="80dp"
-                            android:layout_centerHorizontal="true"
-                            android:layout_centerVertical="true"
-                            android:clipToPadding="false"
-
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <ImageView
-                            android:id="@+id/imageView"
-                            android:layout_width="18dp"
-                            android:layout_height="11dp"
-                            android:layout_gravity="center"
-                            android:scaleType="fitXY"
-                            android:src="@drawable/ic_triangle"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent" />
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                </LinearLayout>
-
-
-            </LinearLayout>
-
-
-            <!--            Height Container-->
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginStart="2dp"
-                android:layout_marginEnd="4dp"
-                android:layout_weight="1"
-                android:background="@drawable/rounded_dash_main"
-                android:orientation="vertical">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
+
+                <!--    main container    -->
                 <LinearLayout
-                    android:id="@+id/linearLayout"
+                    android:layout_marginTop="1dp"
+                    android:id="@+id/bodyContainer"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:paddingBottom="10dp"
+                    android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <!--            gender and weight container-->
+                    <LinearLayout
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:fontFamily="@font/larsseit_medium"
-                        android:gravity="bottom"
-                        android:text="HEIGHT"
-                        android:textColor="@color/textColor"
-                        android:textSize="20sp" />
+                        android:layout_marginStart="1dp"
+                        android:layout_marginEnd=".5dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/rounded_dash_main"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:fontFamily="@font/larsseit_medium"
+                                android:gravity="center"
+                                android:text="GENDER"
+                                android:textColor="@color/textColor"
+                                android:textSize="20sp" />
+
+                            <me.sujanpoudel.wheelview.WheelView
+                                android:id="@+id/gender_wheel_view"
+                                android:layout_width="match_parent"
+                                android:layout_height="160dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:elevation="1dp"
+                                app:wheelAnchorAngle="270"
+                                app:wheelAnimationDuration="800"
+                                app:wheelArcBackgroundColor="@color/backgroundColorAdditional2"
+                                app:wheelCenterIcon="@drawable/ic_user"
+                                app:wheelCenterIconPadding="1dp"
+                                app:wheelCenterIconTint="@color/white"
+                                app:wheelDividerStrokeWidth="4dp"
+                                app:wheelMode="ANIMATE_TO_ANCHOR"
+                                app:wheelSelectedArcBackgroundColor="@color/primaryColor"
+                                app:wheelSelectedTextColor="@color/white"
+                                app:wheelStartAngle="315"
+                                app:wheelTextColor="#000000"
+                                app:wheelTextSize="14sp"
+
+                                />
+
+                        </LinearLayout>
+                        <!--                <com.sccomponents.gauges.library.ScArcGauge-->
+                        <!--                    android:layout_width="match_parent"-->
+                        <!--                    android:layout_height="match_parent"-->
+                        <!--                    android:maxLength="100"-->
+
+
+                        <!--            Weight Container        />-->
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="1dp"
+                            android:background="@drawable/rounded_dash_main"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:gravity="center"
+                                android:orientation="horizontal"
+                                android:paddingBottom="10dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:fontFamily="@font/larsseit_medium"
+                                    android:gravity="bottom"
+                                    android:text="WEIGHT"
+                                    android:textColor="@color/textColor"
+                                    android:textSize="20sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:fontFamily="@font/larsseit_medium"
+                                    android:gravity="bottom"
+                                    android:paddingBottom="3.4dp"
+                                    android:text="(KG)"
+                                    android:textColor="@color/textColorAdditional"
+                                    android:textSize="8sp" />
+
+                            </LinearLayout>
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginTop="30dp"
+                                android:layout_marginEnd="10dp"
+                                android:layout_marginBottom="20dp"
+                                android:background="@drawable/rounded_dash"
+                                android:orientation="vertical">
+
+
+                                <androidx.recyclerview.widget.RecyclerView
+                                    android:id="@+id/weightRecyclerBtn"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="80dp"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_centerVertical="true"
+                                    android:clipToPadding="true"
+                                    android:paddingStart="30dp"
+                                    android:paddingEnd="30dp"
+                                    android:textSize="15sp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+                                <ImageView
+                                    android:id="@+id/imageView"
+                                    android:layout_width="18dp"
+                                    android:layout_height="11dp"
+                                    android:layout_gravity="center"
+                                    android:scaleType="fitXY"
+                                    android:src="@drawable/ic_triangle"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+                    <!--            Height Container-->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:fontFamily="@font/larsseit_medium"
-                        android:gravity="bottom"
-                        android:paddingBottom="3.4dp"
-                        android:text="(CM)"
-                        android:textColor="@color/textColorAdditional"
-                        android:textSize="8sp" />
+                        android:layout_marginStart=".5dp"
+                        android:layout_marginEnd="1dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/rounded_dash_main"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/linearLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:paddingBottom="10dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:fontFamily="@font/larsseit_medium"
+                                android:gravity="bottom"
+                                android:text="HEIGHT"
+                                android:textColor="@color/textColor"
+                                android:textSize="20sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:fontFamily="@font/larsseit_medium"
+                                android:gravity="bottom"
+                                android:paddingBottom="3.4dp"
+                                android:text="(CM)"
+                                android:textColor="@color/textColorAdditional"
+                                android:textSize="8sp" />
+
+                        </LinearLayout>
+
+                        <com.cncoderx.wheelview.WheelView
+                            android:id="@+id/height_wheel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+                            app:wheelCyclic="true"
+                            app:wheelDividerColor="@color/backgroundColorAdditional2"
+                            app:wheelEntries="@array/default_array"
+                            app:wheelHighlightColor="@color/backgroundColor"
+                            app:wheelItemCount="9"
+                            app:wheelItemHeight="38dp"
+                            app:wheelItemWidth="100dp"
+                            app:wheelSelectedTextColor="@color/primaryColor"
+                            app:wheelTextColor="#CC343E45"
+                            app:wheelTextSize="15sp" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
                 </LinearLayout>
 
-                <com.cncoderx.wheelview.WheelView
-                    android:id="@+id/height_wheel"
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:focusable="true"
-                    app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-                    app:wheelCyclic="true"
-                    app:wheelDividerColor="@color/backgroundColorAdditional2"
-                    app:wheelEntries="@array/default_array"
-                    app:wheelHighlightColor="@color/backgroundColor"
-                    app:wheelItemCount="9"
-                    app:wheelItemHeight="38dp"
-                    app:wheelItemWidth="100dp"
-                    app:wheelSelectedTextColor="@color/textColor"
-                    app:wheelTextColor="#CC343E45"
-                    app:wheelTextSize="15sp" />
+                    android:padding="20dp"
+                    android:layout_margin="1dp"
+                    android:background="@drawable/rounded_dash_main"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/bodyContainer">
 
+
+                    <Button
+                        android:id="@+id/start_button"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/start"
+                        android:fontFamily="@font/larsseit_bold"
+                        android:background="@drawable/round_button_blue"
+                        android:textSize="15sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_margin="4dp"
-            android:background="@drawable/rounded_dash_main"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bodyContainer"
-            >
-
-
-        </LinearLayout>
-
-
+        </androidx.core.widget.NestedScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

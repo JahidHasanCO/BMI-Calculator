@@ -2,7 +2,7 @@
     android:id="@+id/weight_picker_item"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
-    android:textSize="25sp"
+    android:textSize="20sp"
     android:gravity="center"
     android:layout_gravity="center"
     android:textColor="@color/textColor"
