@@ -1,16 +1,19 @@
 package dev.jahidhasanco.bmicalculator
 
+import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.SnapHelper
+import com.cncoderx.wheelview.OnWheelChangedListener
 import dev.jahidhasanco.bmicalculator.databinding.ActivityMainBinding
+
 import dev.jahidhasanco.bmicalculator.presentation.adapter.WeightPickerAdapter
 import travel.ithaka.android.horizontalpickerlib.PickerLayoutManager
 import java.util.*
-import kotlin.collections.ArrayList
 
 
 class MainActivity : AppCompatActivity() {
@@ -61,6 +64,16 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+        _binding.heightWheel.onWheelChangedListener =
+            OnWheelChangedListener { view, oldIndex, newIndex ->
+                val text = view.getItem(newIndex)
+                Log.i("WheelView", String.format("index: %d, text: %s", newIndex, text))
+            }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            _binding.heightWheel.defaultFocusHighlightEnabled = true
+        }
+
+
     }
 
     fun getData(count: Int): List<String> {
@@ -70,4 +83,6 @@ class MainActivity : AppCompatActivity() {
         }
         return data
     }
+
+
 }
