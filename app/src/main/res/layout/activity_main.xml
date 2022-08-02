@@ -48,6 +48,7 @@
                 >
 
                 <LinearLayout
+                    android:background="@drawable/rounded_dash_main"
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -62,22 +63,28 @@
                         android:fontFamily="@font/larsseit_medium"
                         />
 
-                    <com.sccomponents.gauges.library.ScArcGauge
-                        android:id="@+id/gender_meter"
+                    <me.sujanpoudel.wheelview.WheelView
+                        android:elevation="0dp"
+                        android:id="@+id/gender_wheel_view"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:sccStrokeColor="#00000000"
-                        app:sccStrokeWidth="1dip"
-                        app:sccNotches="3"
-                        app:sccNotchesColor="@color/primaryColor"
-                        app:sccNotchesHeight="10dp"
-                        app:sccNotchesWidth="10dip"
-                        app:sccAngleSweep="-180"
-                        android:layout_gravity="center"
-                        android:paddingBottom="20dp"
-                        android:paddingLeft="10dp"
-                        android:paddingTop="10dp"
-                        android:paddingRight="10dp"/>
+                        android:layout_height="160dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        app:wheelDividerStrokeWidth="4dp"
+                        app:wheelArcBackgroundColor="@color/backgroundColorAdditional2"
+                        app:wheelSelectedArcBackgroundColor="@color/primaryColor"
+                        app:wheelCenterIcon="@drawable/ic_user"
+                        app:wheelCenterIconPadding="1dp"
+                        app:wheelCenterIconTint="@color/white"
+                        app:wheelAnchorAngle="270"
+                        app:wheelStartAngle="315"
+                        app:wheelTextSize="14sp"
+                        app:wheelSelectedTextColor="@color/white"
+                        app:wheelTextColor="#000000"
+                        app:wheelAnimationDuration="800"
+                        app:wheelMode="ANIMATE_TO_ANCHOR"
+
+                        />
 
                 </LinearLayout>
 <!--                <com.sccomponents.gauges.library.ScArcGauge-->
@@ -89,6 +96,7 @@
 <!--            Weight Container        />-->
 
                 <LinearLayout
+                    android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
