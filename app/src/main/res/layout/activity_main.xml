@@ -10,142 +10,154 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity"
         android:background="@color/backgroundColorAdditional"
-        >
+        tools:context=".MainActivity">
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="70dp"
+            android:background="@color/backgroundColor"
             android:fontFamily="@font/larsseit_bold"
             android:gravity="center_vertical"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
             android:text="@string/app_name"
-            android:background="@color/backgroundColor"
             android:textColor="@color/textColor"
             android:textSize="22sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-<!--    main container    -->
+<!--        <LinearLayout-->
+<!--            android:id="@+id/linearLayout2"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="1dp"-->
+<!--            android:background="@drawable/rounded_dash_main"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/textView"-->
+<!--            android:orientation="horizontal">-->
+
+<!--            <ImageView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:src="@drawable/mike"-->
+<!--                android:scaleType="fitCenter"-->
+<!--                />-->
+
+<!--        </LinearLayout>-->
+
+        <!--    main container    -->
         <LinearLayout
             android:id="@+id/bodyContainer"
-            android:layout_marginTop="4dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView">
 
-<!--            gender and weight container-->
+            <!--            gender and weight container-->
             <LinearLayout
-                android:layout_weight="1"
-                android:orientation="vertical"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginStart="4dp"
                 android:layout_marginEnd="2dp"
-                >
+                android:layout_weight="1"
+                android:orientation="vertical">
 
                 <LinearLayout
-                    android:background="@drawable/rounded_dash_main"
-                    android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_dash_main"
+                    android:orientation="vertical">
 
                     <TextView
-                        android:gravity="center"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
+                        android:fontFamily="@font/larsseit_medium"
+                        android:gravity="center"
                         android:text="GENDER"
                         android:textColor="@color/textColor"
-                        android:textSize="20sp"
-                        android:fontFamily="@font/larsseit_medium"
-                        />
+                        android:textSize="20sp" />
 
                     <me.sujanpoudel.wheelview.WheelView
-                        android:elevation="1dp"
                         android:id="@+id/gender_wheel_view"
                         android:layout_width="match_parent"
                         android:layout_height="160dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
-                        app:wheelDividerStrokeWidth="4dp"
+                        android:elevation="1dp"
+                        app:wheelAnchorAngle="270"
+                        app:wheelAnimationDuration="800"
                         app:wheelArcBackgroundColor="@color/backgroundColorAdditional2"
-                        app:wheelSelectedArcBackgroundColor="@color/primaryColor"
                         app:wheelCenterIcon="@drawable/ic_user"
                         app:wheelCenterIconPadding="1dp"
                         app:wheelCenterIconTint="@color/white"
-                        app:wheelAnchorAngle="270"
-                        app:wheelStartAngle="315"
-                        app:wheelTextSize="14sp"
-                        app:wheelSelectedTextColor="@color/white"
-                        app:wheelTextColor="#000000"
-                        app:wheelAnimationDuration="800"
+                        app:wheelDividerStrokeWidth="4dp"
                         app:wheelMode="ANIMATE_TO_ANCHOR"
+                        app:wheelSelectedArcBackgroundColor="@color/primaryColor"
+                        app:wheelSelectedTextColor="@color/white"
+                        app:wheelStartAngle="315"
+                        app:wheelTextColor="#000000"
+                        app:wheelTextSize="14sp"
 
                         />
 
                 </LinearLayout>
-<!--                <com.sccomponents.gauges.library.ScArcGauge-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="match_parent"-->
-<!--                    android:maxLength="100"-->
+                <!--                <com.sccomponents.gauges.library.ScArcGauge-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="match_parent"-->
+                <!--                    android:maxLength="100"-->
 
 
-<!--            Weight Container        />-->
+                <!--            Weight Container        />-->
 
                 <LinearLayout
-                    android:layout_marginTop="4dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
+                    android:layout_marginTop="4dp"
                     android:background="@drawable/rounded_dash_main"
-                    >
+                    android:orientation="vertical">
 
                     <LinearLayout
-                        android:orientation="horizontal"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:gravity="center"
-                        android:paddingBottom="10dp"
-                        >
+                        android:orientation="horizontal"
+                        android:paddingBottom="10dp">
 
                         <TextView
-                            android:gravity="bottom"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
+                            android:fontFamily="@font/larsseit_medium"
+                            android:gravity="bottom"
                             android:text="WEIGHT"
                             android:textColor="@color/textColor"
-                            android:textSize="20sp"
-                            android:fontFamily="@font/larsseit_medium"
-                            />
+                            android:textSize="20sp" />
+
                         <TextView
-                            android:gravity="bottom"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:text="(KG)"
-                            android:paddingBottom="3.4dp"
-                            android:textColor="@color/textColorAdditional"
-                            android:textSize="8sp"
                             android:fontFamily="@font/larsseit_medium"
-                            />
+                            android:gravity="bottom"
+                            android:paddingBottom="3.4dp"
+                            android:text="(KG)"
+                            android:textColor="@color/textColorAdditional"
+                            android:textSize="8sp" />
 
                     </LinearLayout>
 
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_marginTop="30dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/rounded_dash"
                         android:layout_marginStart="10dp"
+                        android:layout_marginTop="30dp"
                         android:layout_marginEnd="10dp"
-                        android:orientation="vertical"
                         android:layout_marginBottom="20dp"
-                        >
+                        android:background="@drawable/rounded_dash"
+                        android:orientation="vertical">
+
 
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/weightRecyclerBtn"
@@ -161,6 +173,7 @@
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <ImageView
+                            android:id="@+id/imageView"
                             android:layout_width="18dp"
                             android:layout_height="11dp"
                             android:layout_gravity="center"
@@ -178,16 +191,15 @@
             </LinearLayout>
 
 
-<!--            Height Container-->
+            <!--            Height Container-->
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
                 android:layout_marginStart="2dp"
                 android:layout_marginEnd="4dp"
                 android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
                 android:background="@drawable/rounded_dash_main"
-                >
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:id="@+id/linearLayout"
@@ -222,16 +234,16 @@
                 </LinearLayout>
 
                 <com.cncoderx.wheelview.WheelView
-                    android:layout_marginTop="12dp"
                     android:id="@+id/height_wheel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
                     android:focusable="true"
                     app:layout_constraintTop_toBottomOf="@+id/linearLayout"
                     app:wheelCyclic="true"
-                    app:wheelDividerColor="#00343E45"
+                    app:wheelDividerColor="@color/backgroundColorAdditional2"
                     app:wheelEntries="@array/default_array"
-                    app:wheelHighlightColor="@color/backgroundColorAdditional2"
+                    app:wheelHighlightColor="@color/backgroundColor"
                     app:wheelItemCount="9"
                     app:wheelItemHeight="38dp"
                     app:wheelItemWidth="100dp"
@@ -245,6 +257,17 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="4dp"
+            android:background="@drawable/rounded_dash_main"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bodyContainer"
+            >
+
+
+        </LinearLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
