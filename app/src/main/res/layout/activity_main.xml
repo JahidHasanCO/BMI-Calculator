@@ -33,6 +33,7 @@
 <!--    main container    -->
         <LinearLayout
             android:id="@+id/bodyContainer"
+            android:layout_marginTop="4dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
@@ -45,6 +46,8 @@
                 android:orientation="vertical"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="2dp"
                 >
 
                 <LinearLayout
@@ -96,7 +99,7 @@
 <!--            Weight Container        />-->
 
                 <LinearLayout
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="4dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
@@ -148,12 +151,10 @@
                             android:id="@+id/weightRecyclerBtn"
                             android:layout_width="match_parent"
                             android:layout_height="80dp"
-                            android:layout_gravity="center"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
                             android:clipToPadding="false"
-                            android:paddingStart="40dp"
-                            android:paddingEnd="40dp"
-                            android:layoutMode="clipBounds"
-                            android:defaultFocusHighlightEnabled="true"
+
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
@@ -171,7 +172,6 @@
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
                 </LinearLayout>
 
 
@@ -179,59 +179,68 @@
 
 
 <!--            Height Container-->
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_marginStart="2dp"
+                android:layout_marginEnd="4dp"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:background="@drawable/rounded_dash_main"
                 >
+
                 <LinearLayout
-                    android:orientation="horizontal"
+                    android:id="@+id/linearLayout"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:gravity="center"
+                    android:orientation="horizontal"
                     android:paddingBottom="10dp"
-                    >
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <TextView
-                        android:gravity="bottom"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
+                        android:fontFamily="@font/larsseit_medium"
+                        android:gravity="bottom"
                         android:text="HEIGHT"
                         android:textColor="@color/textColor"
-                        android:textSize="20sp"
-                        android:fontFamily="@font/larsseit_medium"
-                        />
+                        android:textSize="20sp" />
+
                     <TextView
-                        android:gravity="bottom"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="(CM)"
-                        android:paddingBottom="3.4dp"
-                        android:textColor="@color/textColorAdditional"
-                        android:textSize="8sp"
                         android:fontFamily="@font/larsseit_medium"
-                        />
+                        android:gravity="bottom"
+                        android:paddingBottom="3.4dp"
+                        android:text="(CM)"
+                        android:textColor="@color/textColorAdditional"
+                        android:textSize="8sp" />
 
                 </LinearLayout>
-                <com.cncoderx.wheelview.Wheel3DView
+
+                <com.cncoderx.wheelview.WheelView
+                    android:layout_marginTop="12dp"
                     android:id="@+id/height_wheel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:focusable="true"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout"
                     app:wheelCyclic="true"
+                    app:wheelDividerColor="#00343E45"
                     app:wheelEntries="@array/default_array"
-                    app:wheelItemCount="8"
+                    app:wheelHighlightColor="@color/backgroundColorAdditional2"
+                    app:wheelItemCount="9"
+                    app:wheelItemHeight="38dp"
                     app:wheelItemWidth="100dp"
-                    app:wheelItemHeight="40dp"
-                    app:wheelTextSize="15sp"
-                    app:wheelTextColor="@color/textColorAdditional"
                     app:wheelSelectedTextColor="@color/textColor"
-                    app:wheelDividerColor="@color/wheel_divider_color"
-                    app:wheelHighlightColor="@color/backgroundColorAdditional2"/>
+                    app:wheelTextColor="#CC343E45"
+                    app:wheelTextSize="15sp" />
 
 
-            </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
 
         </LinearLayout>
