@@ -1,13 +1,17 @@
 package dev.jahidhasanco.bmicalculator.presentation.activity
 
+
+
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.setPadding
 import androidx.databinding.DataBindingUtil
 import dev.jahidhasanco.bmicalculator.R
 import dev.jahidhasanco.bmicalculator.databinding.ActivityResultBinding
+
+
 
 class ResultActivity : AppCompatActivity() {
 
@@ -47,7 +51,12 @@ class ResultActivity : AppCompatActivity() {
 
         }
 
+        _binding.shareBtn.setOnClickListener {
+
+        }
+
     }
+
 
     private fun animationView() {
 
@@ -117,7 +126,7 @@ class ResultActivity : AppCompatActivity() {
     }
 
 
-    fun bmiCal() {
+    private fun bmiCal() {
         if (height > 0 && weight > 0) {
             if (gender == 0) {
                 bmiCalMale()
@@ -148,12 +157,13 @@ class ResultActivity : AppCompatActivity() {
 
     }
 
-    fun bmiCalMale() {
+    private fun bmiCalMale() {
         result = ((weight / (height * height)) * 10000)
     }
 
-    fun bmiCalFemale() {
+    private fun bmiCalFemale() {
         result = ((weight / (height * height)) * 10000)
     }
+
 
 }
