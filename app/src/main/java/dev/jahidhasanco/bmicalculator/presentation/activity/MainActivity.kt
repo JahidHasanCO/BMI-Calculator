@@ -4,16 +4,16 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.setPadding
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.SnapHelper
 import com.cncoderx.wheelview.OnWheelChangedListener
+import com.example.swipebutton_library.OnActiveListener
 import dev.jahidhasanco.bmicalculator.R
 import dev.jahidhasanco.bmicalculator.databinding.ActivityMainBinding
 import dev.jahidhasanco.bmicalculator.presentation.adapter.WeightPickerAdapter
-import dev.jahidhasanco.bmicalculator.utils.displayToast
 import travel.ithaka.android.horizontalpickerlib.PickerLayoutManager
 
 
@@ -104,8 +104,8 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        _binding.startButton.setOnClickListener {
-//            displayToast("Height: $height Weight: $weight Gender: $gender")
+
+        _binding.startButton.setOnActiveListener {
             val intent = Intent(this,ResultActivity::class.java)
             intent.putExtra("Height",height.toDouble())
             intent.putExtra("Weight",weight.toDouble())
@@ -117,6 +117,20 @@ class MainActivity : AppCompatActivity() {
             }
             startActivity(intent)
         }
+
+//        _binding.startButton.setOnClickListener {
+//            displayToast("Height: $height Weight: $weight Gender: $gender")
+//            val intent = Intent(this,ResultActivity::class.java)
+//            intent.putExtra("Height",height.toDouble())
+//            intent.putExtra("Weight",weight.toDouble())
+//            if(gender == 'M'){
+//                intent.putExtra("Gender",0)
+//            }
+//            else{
+//                intent.putExtra("Gender",1)
+//            }
+//            startActivity(intent)
+//        }
 
     }
 
@@ -133,10 +147,10 @@ class MainActivity : AppCompatActivity() {
 
         _binding.apply {
 
-            bodyContainer.translationY = 50f
-            footerContainer.translationY = 50f
-            heightWheel.translationY = 50f
-            weightRecyclerBtn.translationX = 50f
+            bodyContainer.translationY = 150f
+            footerContainer.translationY = 150f
+            heightWheel.translationY = 150f
+            weightRecyclerBtn.translationX = 150f
 //            deleteBtn.translationY = 70f
 //            reloadCardView.translationY = 70f
 //            shareBtn.translationY = 70f

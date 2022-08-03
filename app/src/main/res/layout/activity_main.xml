@@ -88,7 +88,7 @@
                     <me.sujanpoudel.wheelview.WheelView
                         android:id="@+id/gender_wheel_view"
                         android:layout_width="match_parent"
-                        android:layout_height="160dp"
+                        android:layout_height="140dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
                         android:elevation="0dp"
@@ -170,9 +170,9 @@
                             android:layout_height="80dp"
                             android:layout_centerHorizontal="true"
                             android:layout_centerVertical="true"
-                            android:clipToPadding="true"
-                            android:paddingStart="42dp"
-                            android:paddingEnd="42dp"
+                            android:clipToPadding="false"
+                            android:paddingStart="38dp"
+                            android:paddingEnd="38dp"
                             android:textSize="15sp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -289,6 +289,7 @@
             <!--                app:layout_constraintTop_toTopOf="parent" />-->
 
             <com.example.swipebutton_library.SwipeButton
+                android:elevation="20dp"
                 android:id="@+id/start_button"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
@@ -297,21 +298,20 @@
                 app:button_background_padding="0dp"
                 app:button_background_src="@drawable/ic_pacman"
                 app:button_background_tint="@color/backgroundColorAdditional"
-                app:button_height="40dp"
+                app:button_height="70dp"
                 app:button_width="40dp"
                 app:has_active_status="false"
-                app:inner_text="Swipe"
-                app:inner_text_color="@color/textColorAdditional"
+                app:inner_text="....."
+                app:inner_text_color="@color/primaryColor"
                 app:inner_text_gravity="center"
-                app:inner_text_padding="8dp"
-                app:inner_text_size="15sp"
+                app:inner_text_size="50sp"
+                app:inner_text_top_padding="-33dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:outer_background_drawable="@drawable/circular_white_background"
                 app:outer_background_height="40dp"
-
                 app:trail_enabled="false" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
