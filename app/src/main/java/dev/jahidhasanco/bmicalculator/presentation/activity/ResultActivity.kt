@@ -26,11 +26,43 @@ class ResultActivity : AppCompatActivity() {
         gender = intent.getIntExtra("Gender",0)
 
         bmiCal()
-
+        animationView()
         _binding.reloadBtn.setOnClickListener {
             startActivity(Intent(this,MainActivity::class.java))
         }
 
+    }
+
+    private fun animationView() {
+
+        _binding.apply {
+
+            deskImage.translationY = 100f
+            resultText.translationY = 40f
+            bmiText.translationY = 50f
+            bmiTextNormal.translationY = 50f
+            deleteBtn.translationY = 70f
+            reloadCardView.translationY = 70f
+            shareBtn.translationY = 70f
+
+            deskImage.alpha = 0f
+            resultText.alpha = 0f
+            bmiText.alpha = 0f
+            bmiTextNormal.alpha = 0f
+            deleteBtn.alpha = 0f
+            reloadCardView.alpha = 0f
+            shareBtn.alpha = 0f
+
+            deskImage.animate().translationY(0f).alpha(1f).setDuration(500).setStartDelay(300).start()
+            resultText.animate().translationY(0f).alpha(1f).setDuration(500).setStartDelay(500).start()
+            bmiText.animate().translationY(0f).alpha(1f).setDuration(500).setStartDelay(450).start()
+            bmiTextNormal.animate().translationY(0f).alpha(1f).setDuration(500).setStartDelay(500).start()
+            deleteBtn.animate().translationY(0f).alpha(1f).setDuration(500).setStartDelay(600).start()
+            reloadCardView.animate().translationY(0f).alpha(1f).setDuration(500).setStartDelay(750).start()
+            shareBtn.animate().translationY(0f).alpha(1f).setDuration(500).setStartDelay(900).start()
+
+
+        }
     }
 
     fun bmiCal(){
