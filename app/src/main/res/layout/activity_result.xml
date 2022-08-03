@@ -10,14 +10,14 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/backgroundColor"
+        android:background="@color/backgroundColorAdditional"
         tools:context=".presentation.activity.ResultActivity">
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="70dp"
-            android:background="@color/backgroundColor"
+            android:background="@color/backgroundColorAdditional"
             android:fontFamily="@font/larsseit_bold"
             android:gravity="center"
             android:paddingLeft="20dp"

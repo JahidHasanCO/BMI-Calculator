@@ -3,6 +3,7 @@ package dev.jahidhasanco.bmicalculator.presentation.activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import androidx.core.view.setPadding
 import androidx.databinding.DataBindingUtil
 import dev.jahidhasanco.bmicalculator.R
@@ -29,7 +30,20 @@ class ResultActivity : AppCompatActivity() {
         bmiCal()
         animationView()
         _binding.reloadBtn.setOnClickListener {
-            startActivity(Intent(this,MainActivity::class.java))
+            animationViewUp()
+
+                startActivity(Intent(this,MainActivity::class.java))
+
+
+        }
+
+        _binding.deleteBtn.setOnClickListener {
+
+            animationViewUp()
+
+                startActivity(Intent(this,MainActivity::class.java))
+
+
         }
 
     }
@@ -68,6 +82,27 @@ class ResultActivity : AppCompatActivity() {
 
         }
     }
+
+    private fun animationViewUp() {
+
+        _binding.apply {
+
+            deskImage.setPadding(100)
+
+            textView.animate().translationY(0f).alpha(0f).setDuration(500).setStartDelay(200).start()
+            deskImage.animate().translationY(-100f).alpha(0f).setDuration(500).setStartDelay(300).start()
+            deskImage.setPadding(0)
+            resultText.animate().translationY(-40f).alpha(0f).setDuration(500).setStartDelay(500).start()
+            bmiText.animate().translationY(-50f).alpha(0f).setDuration(500).setStartDelay(450).start()
+            bmiTextNormal.animate().translationY(-50f).alpha(0f).setDuration(500).setStartDelay(500).start()
+            deleteBtn.animate().translationY(-70f).alpha(0f).setDuration(500).setStartDelay(600).start()
+            reloadCardView.animate().translationY(-70f).alpha(0f).setDuration(500).setStartDelay(750).start()
+            shareBtn.animate().translationY(-70f).alpha(0f).setDuration(500).setStartDelay(900).start()
+
+
+        }
+    }
+
 
     fun bmiCal(){
         if(height>0 && weight>0){

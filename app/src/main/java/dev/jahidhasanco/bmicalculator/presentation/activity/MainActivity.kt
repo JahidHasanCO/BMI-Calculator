@@ -3,6 +3,7 @@ package dev.jahidhasanco.bmicalculator.presentation.activity
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -106,16 +107,22 @@ class MainActivity : AppCompatActivity() {
 
 
         _binding.startButton.setOnActiveListener {
-            val intent = Intent(this,ResultActivity::class.java)
-            intent.putExtra("Height",height.toDouble())
-            intent.putExtra("Weight",weight.toDouble())
-            if(gender == 'M'){
-                intent.putExtra("Gender",0)
-            }
-            else{
-                intent.putExtra("Gender",1)
-            }
-            startActivity(intent)
+            animationViewUp()
+            _binding.startButton.alpha = 0f
+
+                val intent = Intent(this,ResultActivity::class.java)
+                intent.putExtra("Height",height.toDouble())
+                intent.putExtra("Weight",weight.toDouble())
+                if(gender == 'M'){
+                    intent.putExtra("Gender",0)
+                }
+                else{
+                    intent.putExtra("Gender",1)
+                }
+                startActivity(intent)
+
+
+
         }
 
 //        _binding.startButton.setOnClickListener {
@@ -151,30 +158,34 @@ class MainActivity : AppCompatActivity() {
             footerContainer.translationY = 150f
             heightWheel.translationY = 150f
             weightRecyclerBtn.translationX = 150f
-//            deleteBtn.translationY = 70f
-//            reloadCardView.translationY = 70f
-//            shareBtn.translationY = 70f
+
 
             bodyContainer.alpha = 0f
             footerContainer.alpha = 0f
             heightWheel.alpha = 0f
             weightRecyclerBtn.alpha = 0f
-//            deleteBtn.alpha = 0f
-//            reloadCardView.alpha = 0f
-//            shareBtn.alpha = 0f
+
 
 
             bodyContainer.animate().translationY(0f).alpha(1f).setDuration(500).setStartDelay(300).start()
             footerContainer.animate().translationY(0f).alpha(1f).setDuration(500).setStartDelay(400).start()
             heightWheel.animate().translationY(0f).alpha(1f).setDuration(500).setStartDelay(450).start()
             weightRecyclerBtn.animate().translationX(0f).alpha(1f).setDuration(500).setStartDelay(500).start()
-//            deleteBtn.animate().translationY(0f).alpha(1f).setDuration(500).setStartDelay(600).start()
-//            reloadCardView.animate().translationY(0f).alpha(1f).setDuration(500).setStartDelay(750).start()
-//            shareBtn.animate().translationY(0f).alpha(1f).setDuration(500).setStartDelay(900).start()
-
 
         }
     }
 
+    private fun animationViewUp() {
+
+        _binding.apply {
+
+            textView.animate().translationY(0f).alpha(0f).setDuration(500).setStartDelay(200).start()
+            bodyContainer.animate().translationY(-250f).alpha(0f).setDuration(500).setStartDelay(300).start()
+            footerContainer.animate().translationY(-250f).alpha(0f).setDuration(500).setStartDelay(400).start()
+            heightWheel.animate().translationY(-250f).alpha(0f).setDuration(500).setStartDelay(450).start()
+            weightRecyclerBtn.animate().translationX(-250f).alpha(0f).setDuration(500).setStartDelay(500).start()
+
+        }
+    }
 
 }
