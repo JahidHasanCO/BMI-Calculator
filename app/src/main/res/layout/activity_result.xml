@@ -80,7 +80,6 @@
             android:id="@+id/bmiTextNormal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/larsseit"
             android:gravity="center"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"

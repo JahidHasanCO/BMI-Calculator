@@ -3,39 +3,205 @@
     <string name="start">Start</string>
 
     <string-array name="default_array">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
-        <item>6</item>
-        <item>8</item>
-        <item>9</item>
-        <item>10</item>
-        <item>11</item>
-        <item>12</item>
-        <item>13</item>
-        <item>14</item>
-        <item>15</item>
-        <item>16</item>
-        <item>17</item>
-        <item>18</item>
-        <item>19</item>
-        <item>20</item>
-        <item>21</item>
-        <item>22</item>
-        <item>23</item>
-        <item>24</item>
-        <item>25</item>
-        <item>26</item>
-        <item>27</item>
-        <item>28</item>
-        <item>29</item>
-        <item>30</item>
-        <item>31</item>
-        <item>32</item>
-        <item>33</item>
-        <item>34</item>
+        <item name="1">1</item>
+        <item name="2">2</item>
+        <item name="3">3</item>
+        <item name="4">4</item>
+        <item name="5">5</item>
+        <item name="6">6</item>
+        <item name="7">7</item>
+        <item name="8">8</item>
+        <item name="9">9</item>
+        <item name="10">10</item>
+        <item name="11">11</item>
+        <item name="12">12</item>
+        <item name="13">13</item>
+        <item name="14">14</item>
+        <item name="15">15</item>
+        <item name="16">16</item>
+        <item name="17">17</item>
+        <item name="18">18</item>
+        <item name="19">19</item>
+        <item name="20">20</item>
+        <item name="21">21</item>
+        <item name="22">22</item>
+        <item name="23">23</item>
+        <item name="24">24</item>
+        <item name="25">25</item>
+        <item name="26">26</item>
+        <item name="27">27</item>
+        <item name="28">28</item>
+        <item name="29">29</item>
+        <item name="30">30</item>
+        <item name="31">31</item>
+        <item name="32">32</item>
+        <item name="33">33</item>
+        <item name="34">34</item>
+        <item name="35">35</item>
+        <item name="36">36</item>
+        <item name="37">37</item>
+        <item name="38">38</item>
+        <item name="39">39</item>
+        <item name="40">40</item>
+        <item name="41">41</item>
+        <item name="42">42</item>
+        <item name="43">43</item>
+        <item name="44">44</item>
+        <item name="45">45</item>
+        <item name="46">46</item>
+        <item name="47">47</item>
+        <item name="48">48</item>
+        <item name="49">49</item>
+        <item name="50">50</item>
+        <item name="51">51</item>
+        <item name="52">52</item>
+        <item name="53">53</item>
+        <item name="54">54</item>
+        <item name="55">55</item>
+        <item name="56">56</item>
+        <item name="57">57</item>
+        <item name="58">58</item>
+        <item name="59">59</item>
+        <item name="60">60</item>
+        <item name="61">61</item>
+        <item name="62">62</item>
+        <item name="63">63</item>
+        <item name="64">64</item>
+        <item name="65">65</item>
+        <item name="66">66</item>
+        <item name="67">67</item>
+        <item name="68">68</item>
+        <item name="69">69</item>
+        <item name="70">70</item>
+        <item name="71">71</item>
+        <item name="72">72</item>
+        <item name="73">73</item>
+        <item name="74">74</item>
+        <item name="75">75</item>
+        <item name="76">76</item>
+        <item name="77">77</item>
+        <item name="78">78</item>
+        <item name="79">79</item>
+        <item name="80">80</item>
+        <item name="81">81</item>
+        <item name="82">82</item>
+        <item name="83">83</item>
+        <item name="84">84</item>
+        <item name="85">85</item>
+        <item name="86">86</item>
+        <item name="87">87</item>
+        <item name="88">88</item>
+        <item name="89">89</item>
+        <item name="90">90</item>
+        <item name="91">91</item>
+        <item name="92">92</item>
+        <item name="93">93</item>
+        <item name="94">94</item>
+        <item name="95">95</item>
+        <item name="96">96</item>
+        <item name="97">97</item>
+        <item name="98">98</item>
+        <item name="99">99</item>
+        <item name="100">100</item>
+        <item name="101">101</item>
+        <item name="102">102</item>
+        <item name="103">103</item>
+        <item name="104">104</item>
+        <item name="105">105</item>
+        <item name="106">106</item>
+        <item name="107">107</item>
+        <item name="108">108</item>
+        <item name="109">109</item>
+        <item name="110">110</item>
+        <item name="111">111</item>
+        <item name="112">112</item>
+        <item name="113">113</item>
+        <item name="114">114</item>
+        <item name="115">115</item>
+        <item name="116">116</item>
+        <item name="117">117</item>
+        <item name="118">118</item>
+        <item name="119">119</item>
+        <item name="120">120</item>
+        <item name="121">121</item>
+        <item name="122">122</item>
+        <item name="123">123</item>
+        <item name="124">124</item>
+        <item name="125">125</item>
+        <item name="126">126</item>
+        <item name="127">127</item>
+        <item name="128">128</item>
+        <item name="129">129</item>
+        <item name="130">130</item>
+        <item name="131">131</item>
+        <item name="132">132</item>
+        <item name="133">133</item>
+        <item name="134">134</item>
+        <item name="135">135</item>
+        <item name="136">136</item>
+        <item name="137">137</item>
+        <item name="138">138</item>
+        <item name="139">139</item>
+        <item name="140">140</item>
+        <item name="141">141</item>
+        <item name="142">142</item>
+        <item name="143">143</item>
+        <item name="144">144</item>
+        <item name="145">145</item>
+        <item name="146">146</item>
+        <item name="147">147</item>
+        <item name="148">148</item>
+        <item name="149">149</item>
+        <item name="150">150</item>
+        <item name="151">151</item>
+        <item name="152">152</item>
+        <item name="153">153</item>
+        <item name="154">154</item>
+        <item name="155">155</item>
+        <item name="156">156</item>
+        <item name="157">157</item>
+        <item name="158">158</item>
+        <item name="159">159</item>
+        <item name="160">160</item>
+        <item name="161">161</item>
+        <item name="162">162</item>
+        <item name="163">163</item>
+        <item name="164">164</item>
+        <item name="165">165</item>
+        <item name="166">166</item>
+        <item name="167">167</item>
+        <item name="168">168</item>
+        <item name="169">169</item>
+        <item name="170">170</item>
+        <item name="171">171</item>
+        <item name="172">172</item>
+        <item name="173">173</item>
+        <item name="174">174</item>
+        <item name="175">175</item>
+        <item name="176">176</item>
+        <item name="177">177</item>
+        <item name="178">178</item>
+        <item name="179">179</item>
+        <item name="180">180</item>
+        <item name="181">181</item>
+        <item name="182">182</item>
+        <item name="183">183</item>
+        <item name="184">184</item>
+        <item name="185">185</item>
+        <item name="186">186</item>
+        <item name="187">187</item>
+        <item name="188">188</item>
+        <item name="189">189</item>
+        <item name="190">190</item>
+        <item name="191">191</item>
+        <item name="192">192</item>
+        <item name="193">193</item>
+        <item name="194">194</item>
+        <item name="195">195</item>
+        <item name="196">196</item>
+        <item name="197">197</item>
+        <item name="198">198</item>
+        <item name="199">199</item>
+        <item name="200">200</item>
     </string-array>
 </resources>

@@ -55,6 +55,17 @@ class ResultActivity : AppCompatActivity() {
             bmiText.text = "BMI = $solution kg/m2"
         }
 
+        // update the status text as per the bmi conditions
+//        if (BMI < 18.5) {
+//            status.text = "Under Weight"
+//        } else if (BMI >= 18.5 && BMI < 24.9) {
+//            status.text = "Healthy"
+//        } else if (BMI >= 24.9 && BMI < 30) {
+//            status.text = "Overweight"
+//        } else if (BMI >= 30) {
+//            status.text = "Suffering from Obesity"
+//        }
+
     }
 
     fun bmiCalMale(){

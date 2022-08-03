@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var weightAdapter: WeightPickerAdapter
     var gender = 'M'
     var height = 1
-    var weight = 1
+    var weight = 50
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,14 +55,14 @@ class MainActivity : AppCompatActivity() {
             scaleDownDistance = 0.8f
             initialPrefetchItemCount = 3
             isSmoothScrollbarEnabled = true
-            scrollToPosition(50)
+            scrollToPosition(49)
         }
 
 
         val snapHelper: SnapHelper = LinearSnapHelper()
         snapHelper.attachToRecyclerView(_binding.weightRecyclerBtn)
 
-        weightAdapter = WeightPickerAdapter(this, getData(101), _binding.weightRecyclerBtn)
+        weightAdapter = WeightPickerAdapter(this, getData(151), _binding.weightRecyclerBtn)
 
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -98,6 +98,7 @@ class MainActivity : AppCompatActivity() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             _binding.heightWheel.apply {
                 defaultFocusHighlightEnabled = true
+
             }
         }
 
