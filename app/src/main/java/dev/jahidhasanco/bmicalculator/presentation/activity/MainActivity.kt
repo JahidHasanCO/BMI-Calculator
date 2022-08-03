@@ -5,6 +5,7 @@ import android.os.Build
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.setPadding
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.SnapHelper
@@ -30,6 +31,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
+        animationView()
 //        Gender
         val titlesofGender: List<String> = listOf("F", "O", "M")
 
@@ -127,6 +129,38 @@ class MainActivity : AppCompatActivity() {
         return data
     }
 
+    private fun animationView() {
+
+        _binding.apply {
+
+            bodyContainer.translationY = 50f
+            footerContainer.translationY = 50f
+            heightWheel.translationY = 50f
+            weightRecyclerBtn.translationX = 50f
+//            deleteBtn.translationY = 70f
+//            reloadCardView.translationY = 70f
+//            shareBtn.translationY = 70f
+
+            bodyContainer.alpha = 0f
+            footerContainer.alpha = 0f
+            heightWheel.alpha = 0f
+            weightRecyclerBtn.alpha = 0f
+//            deleteBtn.alpha = 0f
+//            reloadCardView.alpha = 0f
+//            shareBtn.alpha = 0f
+
+
+            bodyContainer.animate().translationY(0f).alpha(1f).setDuration(500).setStartDelay(300).start()
+            footerContainer.animate().translationY(0f).alpha(1f).setDuration(500).setStartDelay(400).start()
+            heightWheel.animate().translationY(0f).alpha(1f).setDuration(500).setStartDelay(450).start()
+            weightRecyclerBtn.animate().translationX(0f).alpha(1f).setDuration(500).setStartDelay(500).start()
+//            deleteBtn.animate().translationY(0f).alpha(1f).setDuration(500).setStartDelay(600).start()
+//            reloadCardView.animate().translationY(0f).alpha(1f).setDuration(500).setStartDelay(750).start()
+//            shareBtn.animate().translationY(0f).alpha(1f).setDuration(500).setStartDelay(900).start()
+
+
+        }
+    }
 
 
 }

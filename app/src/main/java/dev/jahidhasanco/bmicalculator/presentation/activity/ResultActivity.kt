@@ -3,6 +3,7 @@ package dev.jahidhasanco.bmicalculator.presentation.activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.core.view.setPadding
 import androidx.databinding.DataBindingUtil
 import dev.jahidhasanco.bmicalculator.R
 import dev.jahidhasanco.bmicalculator.databinding.ActivityResultBinding
@@ -53,13 +54,16 @@ class ResultActivity : AppCompatActivity() {
             reloadCardView.alpha = 0f
             shareBtn.alpha = 0f
 
+            deskImage.setPadding(100)
+
             deskImage.animate().translationY(0f).alpha(1f).setDuration(500).setStartDelay(300).start()
+            deskImage.setPadding(0)
             resultText.animate().translationY(0f).alpha(1f).setDuration(500).setStartDelay(500).start()
             bmiText.animate().translationY(0f).alpha(1f).setDuration(500).setStartDelay(450).start()
-            bmiTextNormal.animate().translationY(0f).alpha(1f).setDuration(500).setStartDelay(500).start()
-            deleteBtn.animate().translationY(0f).alpha(1f).setDuration(500).setStartDelay(600).start()
+            bmiTextNormal.animate().translationY(0f).alpha(.3f).setDuration(500).setStartDelay(500).start()
+            deleteBtn.animate().translationY(0f).alpha(.3f).setDuration(500).setStartDelay(600).start()
             reloadCardView.animate().translationY(0f).alpha(1f).setDuration(500).setStartDelay(750).start()
-            shareBtn.animate().translationY(0f).alpha(1f).setDuration(500).setStartDelay(900).start()
+            shareBtn.animate().translationY(0f).alpha(.3f).setDuration(500).setStartDelay(900).start()
 
 
         }
