@@ -48,6 +48,6 @@ dependencies {
     implementation  'com.github.adityagohad:HorizontalPicker:1.0.1'
     implementation 'com.github.psuzn:WheelView:1.0.0'
     implementation 'com.github.CNCoderX:WheelView:1.2.6'
-    
+    implementation 'com.github.mhdmoh:swipe-button:1.0.3'
 
 }

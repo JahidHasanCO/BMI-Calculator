@@ -4,7 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/vdjso/AndroidStudioProjects/BMICalculator/app/src/main/res/drawable/circle.xml" value="0.2925" />
+        <entry key="..\:/Users/vdjso/AndroidStudioProjects/BMICalculator/app/src/main/res/drawable/circular_white_background.xml" value="0.2925" />
         <entry key="..\:/Users/vdjso/AndroidStudioProjects/BMICalculator/app/src/main/res/drawable/ic_delete.xml" value="0.2925" />
+        <entry key="..\:/Users/vdjso/AndroidStudioProjects/BMICalculator/app/src/main/res/drawable/ic_pacman.xml" value="0.2925" />
         <entry key="..\:/Users/vdjso/AndroidStudioProjects/BMICalculator/app/src/main/res/drawable/ic_rotate.xml" value="0.2925" />
         <entry key="..\:/Users/vdjso/AndroidStudioProjects/BMICalculator/app/src/main/res/drawable/ic_share.xml" value="0.2925" />
         <entry key="..\:/Users/vdjso/AndroidStudioProjects/BMICalculator/app/src/main/res/drawable/ic_triangle.xml" value="0.2875" />
@@ -12,8 +14,9 @@
         <entry key="..\:/Users/vdjso/AndroidStudioProjects/BMICalculator/app/src/main/res/drawable/rounded_dash.xml" value="0.157" />
         <entry key="..\:/Users/vdjso/AndroidStudioProjects/BMICalculator/app/src/main/res/drawable/rounded_dash_main.xml" value="0.171" />
         <entry key="..\:/Users/vdjso/AndroidStudioProjects/BMICalculator/app/src/main/res/drawable/rounded_strock.xml" value="0.2925" />
-        <entry key="..\:/Users/vdjso/AndroidStudioProjects/BMICalculator/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/vdjso/AndroidStudioProjects/BMICalculator/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/vdjso/AndroidStudioProjects/BMICalculator/app/src/main/res/layout/activity_result.xml" value="0.25" />
+        <entry key="..\:/Users/vdjso/AndroidStudioProjects/BMICalculator/app/src/main/res/layout/button.xml" value="0.32592592592592595" />
         <entry key="..\:/Users/vdjso/AndroidStudioProjects/BMICalculator/app/src/main/res/layout/weather_picker_item_layout.xml" value="0.325" />
         <entry key="..\:/Users/vdjso/AndroidStudioProjects/BMICalculator/app/src/main/res/layout/weight_picker_item_layout.xml" value="0.25" />
       </map>

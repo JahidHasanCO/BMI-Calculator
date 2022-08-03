@@ -19,7 +19,6 @@
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="70dp"
-            android:background="@color/backgroundColor"
             android:fontFamily="@font/larsseit_bold"
             android:gravity="center_vertical"
             android:paddingLeft="20dp"
@@ -56,6 +55,7 @@
             android:id="@+id/bodyContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingBottom="50dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView">
@@ -64,12 +64,13 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginStart="1dp"
-                android:layout_marginEnd=".5dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="5dp"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
                 <LinearLayout
+                    android:elevation="25dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/rounded_dash_main"
@@ -90,7 +91,7 @@
                         android:layout_height="160dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
-                        android:elevation="1dp"
+                        android:elevation="0dp"
                         app:wheelAnchorAngle="270"
                         app:wheelAnimationDuration="800"
                         app:wheelArcBackgroundColor="@color/backgroundColorAdditional2"
@@ -117,9 +118,10 @@
                 <!--            Weight Container        />-->
 
                 <LinearLayout
+                    android:elevation="25dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="1dp"
+                    android:layout_marginTop="40dp"
                     android:background="@drawable/rounded_dash_main"
                     android:orientation="vertical">
 
@@ -200,8 +202,8 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginStart=".5dp"
-                android:layout_marginEnd="1dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="20dp"
                 android:layout_weight="1"
                 android:background="@drawable/rounded_dash_main"
                 android:orientation="vertical">
@@ -267,25 +269,50 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="1dp"
-            android:background="@drawable/rounded_dash_main"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/bodyContainer">
 
 
-            <Button
+            <!--            <Button-->
+            <!--                android:id="@+id/start_button"-->
+            <!--                android:layout_width="100dp"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:background="@drawable/round_button_blue"-->
+            <!--                android:fontFamily="@font/larsseit_bold"-->
+            <!--                android:text="@string/start"-->
+            <!--                android:textSize="15sp"-->
+            <!--                android:layout_margin="20dp"-->
+            <!--                app:layout_constraintBottom_toBottomOf="parent"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                app:layout_constraintStart_toStartOf="parent"-->
+            <!--                app:layout_constraintTop_toTopOf="parent" />-->
+
+            <com.example.swipebutton_library.SwipeButton
                 android:id="@+id/start_button"
-                android:layout_width="100dp"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:background="@drawable/round_button_blue"
-                android:fontFamily="@font/larsseit_bold"
-                android:text="@string/start"
-                android:textSize="15sp"
-                android:layout_margin="20dp"
+                android:layout_margin="8dp"
+                app:button_background_drawable="@drawable/circular_white_background"
+                app:button_background_padding="0dp"
+                app:button_background_src="@drawable/ic_pacman"
+                app:button_background_tint="@color/backgroundColorAdditional"
+                app:button_height="40dp"
+                app:button_width="40dp"
+                app:has_active_status="false"
+                app:inner_text="Swipe"
+                app:inner_text_color="@color/textColorAdditional"
+                app:inner_text_gravity="center"
+                app:inner_text_padding="8dp"
+                app:inner_text_size="15sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:outer_background_drawable="@drawable/circular_white_background"
+                app:outer_background_height="40dp"
+
+                app:trail_enabled="false" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
