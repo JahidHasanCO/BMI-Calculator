@@ -14,25 +14,26 @@ class ResultActivity : AppCompatActivity() {
     private lateinit var binding: ActivityResultBinding
     val _binding get() = binding
 
-    var weight : Double = 0.0
-    var height : Double = 0.0
-    var result : Double = 0.0
-    var gender : Int = 0
+    var weight: Double = 0.0
+    var height: Double = 0.0
+    var result: Double = 0.0
+    var gender: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_result)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_result)
 
-        weight = intent.getDoubleExtra("Weight",50.0)
-        height = intent.getDoubleExtra("Height",1.0)
-        gender = intent.getIntExtra("Gender",0)
+        weight = intent.getDoubleExtra("Weight", 50.0)
+        height = intent.getDoubleExtra("Height", 1.0)
+        gender = intent.getIntExtra("Gender", 0)
 
         bmiCal()
         animationView()
         _binding.reloadBtn.setOnClickListener {
             animationViewUp()
-
-                startActivity(Intent(this,MainActivity::class.java))
+            Handler().postDelayed({
+                startActivity(Intent(this, MainActivity::class.java))
+            }, 600)
 
 
         }
@@ -40,9 +41,9 @@ class ResultActivity : AppCompatActivity() {
         _binding.deleteBtn.setOnClickListener {
 
             animationViewUp()
-
-                startActivity(Intent(this,MainActivity::class.java))
-
+            Handler().postDelayed({
+                startActivity(Intent(this, MainActivity::class.java))
+            }, 600)
 
         }
 
@@ -70,14 +71,20 @@ class ResultActivity : AppCompatActivity() {
 
             deskImage.setPadding(100)
 
-            deskImage.animate().translationY(0f).alpha(1f).setDuration(500).setStartDelay(300).start()
+            deskImage.animate().translationY(0f).alpha(1f).setDuration(500).setStartDelay(300)
+                .start()
             deskImage.setPadding(0)
-            resultText.animate().translationY(0f).alpha(1f).setDuration(500).setStartDelay(500).start()
+            resultText.animate().translationY(0f).alpha(1f).setDuration(500).setStartDelay(500)
+                .start()
             bmiText.animate().translationY(0f).alpha(1f).setDuration(500).setStartDelay(450).start()
-            bmiTextNormal.animate().translationY(0f).alpha(.3f).setDuration(500).setStartDelay(500).start()
-            deleteBtn.animate().translationY(0f).alpha(.3f).setDuration(500).setStartDelay(600).start()
-            reloadCardView.animate().translationY(0f).alpha(1f).setDuration(500).setStartDelay(750).start()
-            shareBtn.animate().translationY(0f).alpha(.3f).setDuration(500).setStartDelay(900).start()
+            bmiTextNormal.animate().translationY(0f).alpha(.3f).setDuration(500).setStartDelay(500)
+                .start()
+            deleteBtn.animate().translationY(0f).alpha(.3f).setDuration(500).setStartDelay(600)
+                .start()
+            reloadCardView.animate().translationY(0f).alpha(1f).setDuration(500).setStartDelay(750)
+                .start()
+            shareBtn.animate().translationY(0f).alpha(.3f).setDuration(500).setStartDelay(900)
+                .start()
 
 
         }
@@ -87,29 +94,34 @@ class ResultActivity : AppCompatActivity() {
 
         _binding.apply {
 
-            deskImage.setPadding(100)
+            textView.animate().translationY(0f).alpha(0f).setDuration(500).setStartDelay(0)
+                .start()
+            deskImage.animate().translationY(-250f).alpha(0f).setDuration(500).setStartDelay(0)
+                .start()
 
-            textView.animate().translationY(0f).alpha(0f).setDuration(500).setStartDelay(200).start()
-            deskImage.animate().translationY(-100f).alpha(0f).setDuration(500).setStartDelay(300).start()
-            deskImage.setPadding(0)
-            resultText.animate().translationY(-40f).alpha(0f).setDuration(500).setStartDelay(500).start()
-            bmiText.animate().translationY(-50f).alpha(0f).setDuration(500).setStartDelay(450).start()
-            bmiTextNormal.animate().translationY(-50f).alpha(0f).setDuration(500).setStartDelay(500).start()
-            deleteBtn.animate().translationY(-70f).alpha(0f).setDuration(500).setStartDelay(600).start()
-            reloadCardView.animate().translationY(-70f).alpha(0f).setDuration(500).setStartDelay(750).start()
-            shareBtn.animate().translationY(-70f).alpha(0f).setDuration(500).setStartDelay(900).start()
+            resultText.animate().translationY(-250f).alpha(0f).setDuration(500).setStartDelay(50)
+                .start()
+            bmiText.animate().translationY(-250f).alpha(0f).setDuration(500).setStartDelay(100)
+                .start()
+            bmiTextNormal.animate().translationY(-250f).alpha(0f).setDuration(500).setStartDelay(150)
+                .start()
+            deleteBtn.animate().translationY(-250f).alpha(0f).setDuration(300).setStartDelay(200)
+                .start()
+            reloadCardView.animate().translationY(-250f).alpha(0f).setDuration(300)
+                .setStartDelay(250).start()
+            shareBtn.animate().translationY(-250f).alpha(0f).setDuration(300).setStartDelay(300)
+                .start()
 
 
         }
     }
 
 
-    fun bmiCal(){
-        if(height>0 && weight>0){
-            if(gender==0){
+    fun bmiCal() {
+        if (height > 0 && weight > 0) {
+            if (gender == 0) {
                 bmiCalMale()
-            }
-            else if(gender == 1){
+            } else if (gender == 1) {
                 bmiCalFemale()
             }
             showResult()
@@ -136,11 +148,12 @@ class ResultActivity : AppCompatActivity() {
 
     }
 
-    fun bmiCalMale(){
-        result = ((weight/(height*height))*10000)
+    fun bmiCalMale() {
+        result = ((weight / (height * height)) * 10000)
     }
-    fun bmiCalFemale(){
-        result = ((weight/(height*height))*10000)
+
+    fun bmiCalFemale() {
+        result = ((weight / (height * height)) * 10000)
     }
 
 }

@@ -109,6 +109,7 @@ class MainActivity : AppCompatActivity() {
         _binding.startButton.setOnActiveListener {
             animationViewUp()
             _binding.startButton.alpha = 0f
+            Handler().postDelayed({
 
                 val intent = Intent(this,ResultActivity::class.java)
                 intent.putExtra("Height",height.toDouble())
@@ -121,8 +122,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 startActivity(intent)
 
-
-
+            }, 500)
         }
 
 //        _binding.startButton.setOnClickListener {
@@ -179,11 +179,11 @@ class MainActivity : AppCompatActivity() {
 
         _binding.apply {
 
-            textView.animate().translationY(0f).alpha(0f).setDuration(500).setStartDelay(200).start()
-            bodyContainer.animate().translationY(-250f).alpha(0f).setDuration(500).setStartDelay(300).start()
-            footerContainer.animate().translationY(-250f).alpha(0f).setDuration(500).setStartDelay(400).start()
-            heightWheel.animate().translationY(-250f).alpha(0f).setDuration(500).setStartDelay(450).start()
-            weightRecyclerBtn.animate().translationX(-250f).alpha(0f).setDuration(500).setStartDelay(500).start()
+            textView.animate().translationY(0f).alpha(0f).setDuration(50).setStartDelay(0).start()
+            bodyContainer.animate().translationY(-250f).alpha(0f).setDuration(500).setStartDelay(0).start()
+            footerContainer.animate().translationY(-250f).alpha(0f).setDuration(500).setStartDelay(50).start()
+            heightWheel.animate().translationY(-250f).alpha(0f).setDuration(500).setStartDelay(100).start()
+            weightRecyclerBtn.animate().translationX(-250f).alpha(0f).setDuration(500).setStartDelay(150).start()
 
         }
     }
