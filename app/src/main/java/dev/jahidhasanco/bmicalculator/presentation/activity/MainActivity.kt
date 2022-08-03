@@ -1,14 +1,15 @@
-package dev.jahidhasanco.bmicalculator
+package dev.jahidhasanco.bmicalculator.presentation.activity
 
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.SnapHelper
 import com.cncoderx.wheelview.OnWheelChangedListener
+import dev.jahidhasanco.bmicalculator.R
 import dev.jahidhasanco.bmicalculator.databinding.ActivityMainBinding
 import dev.jahidhasanco.bmicalculator.presentation.adapter.WeightPickerAdapter
 import dev.jahidhasanco.bmicalculator.utils.displayToast
@@ -101,7 +102,17 @@ class MainActivity : AppCompatActivity() {
         }
 
         _binding.startButton.setOnClickListener {
-            displayToast("Height: $height Weight: $weight Gender: $gender")
+//            displayToast("Height: $height Weight: $weight Gender: $gender")
+            val intent = Intent(this,ResultActivity::class.java)
+            intent.putExtra("Height",height.toDouble())
+            intent.putExtra("Weight",weight.toDouble())
+            if(gender == 'M'){
+                intent.putExtra("Gender",0)
+            }
+            else{
+                intent.putExtra("Gender",1)
+            }
+            startActivity(intent)
         }
 
     }
