@@ -120,22 +120,19 @@ class ResultActivity : AppCompatActivity() {
     private fun showResult() {
 
         val solution = String.format("%.1f", result)
-
-        _binding.apply {
-            resultText.text = solution
-            bmiText.text = "BMI = $solution kg/m2"
+        _binding.resultText.text = solution
+        _binding.bmiText.apply {
+            if (result < 18.5) {
+                this.text = "You are Under Weight"
+            } else if (result >= 18.5 && result < 24.9) {
+                this.text = "You are Healthy"
+            } else if (result >= 24.9 && result < 30) {
+                this.text = "You are Overweight"
+            } else if (result >= 30) {
+                this.text = "You are Suffering from Obesity"
+            }
         }
 
-        // update the status text as per the bmi conditions
-//        if (BMI < 18.5) {
-//            status.text = "Under Weight"
-//        } else if (BMI >= 18.5 && BMI < 24.9) {
-//            status.text = "Healthy"
-//        } else if (BMI >= 24.9 && BMI < 30) {
-//            status.text = "Overweight"
-//        } else if (BMI >= 30) {
-//            status.text = "Suffering from Obesity"
-//        }
 
     }
 
