@@ -2,15 +2,25 @@ package dev.jahidhasanco.bmicalculator.presentation.activity
 
 
 
+import android.Manifest
+import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.os.Handler
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ShareCompat
+import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.core.content.ContextCompat
+import androidx.core.view.drawToBitmap
 import androidx.core.view.setPadding
 import androidx.databinding.DataBindingUtil
 import dev.jahidhasanco.bmicalculator.R
 import dev.jahidhasanco.bmicalculator.databinding.ActivityResultBinding
-
+import dev.jahidhasanco.bmicalculator.utils.displayToast
+import dev.jahidhasanco.bmicalculator.utils.saveBitmap
 
 
 class ResultActivity : AppCompatActivity() {
@@ -23,6 +33,17 @@ class ResultActivity : AppCompatActivity() {
     var result: Double = 0.0
     var gender: Int = 0
 
+    // handle permission dialog
+    private val requestLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
+            if (isGranted) shareImage() else showErrorDialog()
+        }
+
+    private fun showErrorDialog() {
+
+    }
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_result)
@@ -34,29 +55,93 @@ class ResultActivity : AppCompatActivity() {
         bmiCal()
         animationView()
         _binding.reloadBtn.setOnClickListener {
-            animationViewUp()
-            Handler().postDelayed({
-                startActivity(Intent(this, MainActivity::class.java))
-            }, 600)
 
+            backPreviousPage()
 
         }
 
         _binding.deleteBtn.setOnClickListener {
 
-            animationViewUp()
-            Handler().postDelayed({
-                startActivity(Intent(this, MainActivity::class.java))
-            }, 600)
+            backPreviousPage()
 
         }
 
         _binding.shareBtn.setOnClickListener {
-
+            shareImage()
         }
 
     }
 
+    private fun shareImage() {
+        if (!isStoragePermissionGranted()) {
+            requestLauncher.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+            return
+        }
+
+        // unHide the app logo and name
+//        showAppNameAndLogo()
+        val imageURI = _binding.detailView.drawToBitmap().let { bitmap ->
+ //           hideAppNameAndLogo()
+            saveBitmap(this, bitmap)
+        } ?: run {
+            displayToast("Error occurred!")
+            return
+        }
+
+        val intent = ShareCompat.IntentBuilder(this)
+            .setType("image/jpeg")
+            .setStream(imageURI)
+            .intent
+
+        startActivity(Intent.createChooser(intent, null))
+    }
+
+//    private fun showAppNameAndLogo() = with(_binding.transactionDetails) {
+//        appIconForShare.show()
+//        appNameForShare.show()
+//    }
+//
+//    private fun hideAppNameAndLogo() = with(binding.transactionDetails) {
+//        appIconForShare.hide()
+//        appNameForShare.hide()
+//    }
+
+    private fun isStoragePermissionGranted(): Boolean = ContextCompat.checkSelfPermission(
+        this,
+        Manifest.permission.WRITE_EXTERNAL_STORAGE
+    ) == PackageManager.PERMISSION_GRANTED
+
+
+//    private fun shareText() = with(binding) {
+//        val shareMsg = getString(
+//            3,
+//            ""
+//            R.string.share_message,
+//            transactionDetails.title.text.toString(),
+//            transactionDetails.amount.text.toString(),
+//            transactionDetails.type.text.toString(),
+//            transactionDetails.tag.text.toString(),
+//            transactionDetails.date.text.toString(),
+//            transactionDetails.note.text.toString(),
+//            transactionDetails.createdAt.text.toString()
+//        )
+//
+//        val intent = ShareCompat.IntentBuilder(Activity())
+//            .setType("text/plain")
+//            .setText(shareMsg)
+//            .intent
+//
+//        startActivity(Intent.createChooser(intent, null))
+//    }
+
+
+    private fun backPreviousPage(){
+        animationViewUp()
+        Handler().postDelayed({
+            startActivity(Intent(this, MainActivity::class.java))
+        }, 600)
+
+    }
 
     private fun animationView() {
 
@@ -165,5 +250,8 @@ class ResultActivity : AppCompatActivity() {
         result = ((weight / (height * height)) * 10000)
     }
 
+    override fun onBackPressed() {
+        backPreviousPage()
+    }
 
 }
