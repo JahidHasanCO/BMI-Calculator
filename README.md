@@ -3,7 +3,7 @@
 # 🔖BMI Calculator
 A convenient BMI (Body Mass Index) calculator that is compatible with Android devices.🖥
 
-Please feel free to compute your BMI using the calculator (Body Mass Index). You can reach me on GitHub or submit your modifications if you have suggestions or identify errors. There wasn't a good calculator on the web, which is why I created this one.
+Please feel free to compute your BMI using the calculator (Body Mass Index). You can reach me on GitHub or submit your modifications if you have suggestions or identify errors.
 [![Gradle Package](https://github.com/JahidHasanCO/BMI-Calculator/actions/workflows/gradle-publish.yml/badge.svg)](https://github.com/JahidHasanCO/BMI-Calculator/actions/workflows/gradle-publish.yml)[![Codacy Security Scan](https://github.com/JahidHasanCO/BMI-Calculator/actions/workflows/codacy.yml/badge.svg)](https://github.com/JahidHasanCO/BMI-Calculator/actions/workflows/codacy.yml)[![Scan with Detekt](https://github.com/JahidHasanCO/BMI-Calculator/actions/workflows/detekt.yml/badge.svg)](https://github.com/JahidHasanCO/BMI-Calculator/actions/workflows/detekt.yml)
 
 ## Built With 🛠
