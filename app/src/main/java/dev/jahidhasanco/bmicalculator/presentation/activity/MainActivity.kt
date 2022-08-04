@@ -12,7 +12,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.SnapHelper
 import com.cncoderx.wheelview.OnWheelChangedListener
-import com.example.swipebutton_library.OnActiveListener
 import dev.jahidhasanco.bmicalculator.R
 import dev.jahidhasanco.bmicalculator.databinding.ActivityMainBinding
 import dev.jahidhasanco.bmicalculator.presentation.adapter.WeightPickerAdapter
@@ -22,12 +21,12 @@ import travel.ithaka.android.horizontalpickerlib.PickerLayoutManager
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    val _binding get() = binding
+    private val _binding get() = binding
 
-    lateinit var weightAdapter: WeightPickerAdapter
-    var gender = 'M'
+    private lateinit var weightAdapter: WeightPickerAdapter
+    private var gender = 'M'
     var height = 1
-    var weight = 50
+    private var weight = 50
 
     private var doubleBackToExitPressedOnce = false
 
@@ -37,10 +36,10 @@ class MainActivity : AppCompatActivity() {
 
         animationView()
 //        Gender
-        val titlesofGender: List<String> = listOf("F", "O", "M")
+        val titlesOfGender: List<String> = listOf("F", "O", "M")
 
         _binding.genderWheelView.apply {
-            titles = titlesofGender
+            titles = titlesOfGender
             elevation = 0f
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 isFocusedByDefault = true
@@ -49,7 +48,7 @@ class MainActivity : AppCompatActivity() {
             focusedIndex = 2
         }
         _binding.genderWheelView.selectListener = {
-           gender = titlesofGender[it][0]
+           gender = titlesOfGender[it][0]
         }
 
 
@@ -94,7 +93,7 @@ class MainActivity : AppCompatActivity() {
 
 //        Height
         _binding.heightWheel.onWheelChangedListener =
-            OnWheelChangedListener { view, oldIndex, newIndex ->
+            OnWheelChangedListener { view, _, newIndex ->
                 val text = view.getItem(newIndex)
                 height = Integer.parseInt(text.toString())
 //                Toast.makeText(this,""+ text,Toast.LENGTH_SHORT).show()
@@ -145,7 +144,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    fun getData(count: Int): List<String> {
+    private fun getData(count: Int): List<String> {
         val data: MutableList<String> = ArrayList()
         for (i in 0 until count) {
             data.add(i.toString())
@@ -200,7 +199,7 @@ class MainActivity : AppCompatActivity() {
         this.doubleBackToExitPressedOnce = true
         Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show()
 
-        Handler(Looper.getMainLooper()).postDelayed(Runnable { doubleBackToExitPressedOnce = false }, 2000)
+        Handler(Looper.getMainLooper()).postDelayed({ doubleBackToExitPressedOnce = false }, 2000)
     }
 
 }

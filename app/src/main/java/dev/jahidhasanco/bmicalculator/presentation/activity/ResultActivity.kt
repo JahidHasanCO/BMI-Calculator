@@ -4,7 +4,6 @@ package dev.jahidhasanco.bmicalculator.presentation.activity
 
 import android.Manifest
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
@@ -12,7 +11,6 @@ import android.os.Handler
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ShareCompat
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
 import androidx.core.view.drawToBitmap
 import androidx.core.view.setPadding
@@ -26,12 +24,12 @@ import dev.jahidhasanco.bmicalculator.utils.saveBitmap
 class ResultActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityResultBinding
-    val _binding get() = binding
+    private val _binding get() = binding
 
-    var weight: Double = 0.0
-    var height: Double = 0.0
-    var result: Double = 0.0
-    var gender: Int = 0
+    private var weight: Double =1.0
+    private var height: Double = 1.0
+    private var result: Double = 0.0
+    private var gender: Int = 0
 
     // handle permission dialog
     private val requestLauncher =
@@ -223,6 +221,7 @@ class ResultActivity : AppCompatActivity() {
 
     }
 
+    @SuppressLint("SetTextI18n")
     private fun showResult() {
 
         val solution = String.format("%.1f", result)
