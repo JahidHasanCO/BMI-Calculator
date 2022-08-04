@@ -16,7 +16,7 @@ Please feel free to compute your BMI using the calculator (Body Mass Index). You
 - [CNCoderX/WheelView](https://github.com/CNCoderX/WheelView) - The wheel widget for Android Wheel selection controls.
 - [swipe-button](https://github.com/mhdmoh/swipe-button) - A Highly Customizable Swipe Button.
 - [Material Components for Android](https://github.com/material-components/material-components-android) - Modular and customizable Material Design UI components for Android.
-- [Dribbble]([https://figma.com/)](https://dribbble.com/shots/4445853-BMI-Calculator-app) - Dribbble is a self-promotion and social networking platform for digital designers and creatives.
+- [Dribbble](https://dribbble.com/shots/4445853-BMI-Calculator-app) - Dribbble is a self-promotion and social networking platform for digital designers and creatives.
 
 
 ## Day Mode 🌞
