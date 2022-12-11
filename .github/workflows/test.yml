@@ -18,6 +18,7 @@ jobs:
           to: "-677728639"
           token: "5778849475:AAEuVVY0-fA5361Zkv1tSBfnQYujCQCc1kA"
           message: Hi, This is test messege from github Action
+          message_file: app/build.gradle.kts
         
            
         
