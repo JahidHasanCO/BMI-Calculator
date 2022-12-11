@@ -1,4 +1,4 @@
-name: Send APK
+name: Test, Review and Generate APK
 on:
   push:
     branches: [ "master" ]
@@ -15,9 +15,11 @@ jobs:
       - name: send telegram message on push
         uses: appleboy/telegram-action@master
         with:
-          to: ${{ secrets.TELEGRAM_TO }}
-          token: ${{ secrets.TELEGRAM_TOKEN }}
+          to: "-677728639"
+          token: "5778849475:AAEuVVY0-fA5361Zkv1tSBfnQYujCQCc1kA"
           message: Hi, This is test messege from github Action
+        
+           
         
            
 
