@@ -5,11 +5,12 @@ on:
   pull_request:
     # The branches below must be a subset of the branches above
     branches: [ "master" ]
-
+  
+  workflow_dispatch:
 permissions:
   contents: read
 
-workflow_dispatch:
+
 env:
   # Release tag associated with version of Detekt to be installed
   # SARIF support (required for this workflow) was introduced in Detekt v1.15.0
