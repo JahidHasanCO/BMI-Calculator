@@ -100,7 +100,7 @@ jobs:
       - name: Download Stored Artifact
         uses: actions/download-artifact@v3
         with:
-          name: app-debug
+          name: app
 
       - name: send telegram message on push
         uses: appleboy/telegram-action@master
@@ -115,5 +115,4 @@ jobs:
             
             See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
           document: app-debug.apk
-
 
