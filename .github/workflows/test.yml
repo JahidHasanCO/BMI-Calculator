@@ -102,7 +102,8 @@ jobs:
         with:
           to: "-677728639"
           token: "5778849475:AAEuVVY0-fA5361Zkv1tSBfnQYujCQCc1kA"
-          message: Hi Your Repository has been Tested. ${{ github.actor }} created commit:
+          message: |
+            ${{ github.actor }} created commit:
             Commit message: ${{ github.event.commits[0].message }}
             
             Repository: ${{ github.repository }}
