@@ -91,3 +91,23 @@ jobs:
           with:
             name: app
             path: app/build/outputs/apk/debug/app-debug.apk
+  
+  send-apk-on-telegram:
+    name: Send Apk on Telegram
+    needs: apk
+    runs-on: ubuntu-latest
+    steps:
+      - name: send telegram message on push
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+            ${{ github.actor }} created commit:
+            Commit message: ${{ github.event.commits[0].message }}
+            
+            Repository: ${{ github.repository }}
+            
+            See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}      
+
+
