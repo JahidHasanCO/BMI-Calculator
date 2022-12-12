@@ -11,53 +11,54 @@ permissions:
 
 
 jobs:
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout the code
-        uses: actions/checkout@v3
 
-      - name: Grant Permission to Execute
-        run: chmod +x gradlew
+  # lint:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout the code
+  #       uses: actions/checkout@v3
 
-      - name: Run lint
-        run: ./gradlew lintDebug
+  #     - name: Grant Permission to Execute
+  #       run: chmod +x gradlew
 
-      - name: Upload html test report
-        uses: actions/upload-artifact@v3.1.1
-        with:
-          name: lint.html
-          path: app/build/reports/lint-results-debug.html
+  #     - name: Run lint
+  #       run: ./gradlew lintDebug
 
-  unit-test:
-    name: Run Unit Tests
-    needs: [lint]
-    runs-on: ubuntu-latest
+  #     - name: Upload html test report
+  #       uses: actions/upload-artifact@v3.1.1
+  #       with:
+  #         name: lint.html
+  #         path: app/build/reports/lint-results-debug.html
 
-    steps:
-      - uses: actions/checkout@v3
+  # unit-test:
+  #   name: Run Unit Tests
+  #   needs: [lint]
+  #   runs-on: ubuntu-latest
 
-      # Cache gradle
-      - name: Cache Gradle and wrapper
-        uses: actions/cache@v3
-        with:
-          path: |
-            ~/.gradle/caches
-            ~/.gradle/wrapper
-          key: cache-${{ runner.os }}-${{ matrix.jdk }}-gradle-${{ hashFiles('**/*.gradle*') }}
-          restore-keys: |
-            ${{ runner.os }}-gradle-
-      - name: Validate Gradle Wrapper
-        uses: gradle/wrapper-validation-action@v1
+  #   steps:
+  #     - uses: actions/checkout@v3
 
-      - name: Run Unit tests
-        run: bash ./gradlew test --stacktrace
+  #     # Cache gradle
+  #     - name: Cache Gradle and wrapper
+  #       uses: actions/cache@v3
+  #       with:
+  #         path: |
+  #           ~/.gradle/caches
+  #           ~/.gradle/wrapper
+  #         key: cache-${{ runner.os }}-${{ matrix.jdk }}-gradle-${{ hashFiles('**/*.gradle*') }}
+  #         restore-keys: |
+  #           ${{ runner.os }}-gradle-
+  #     - name: Validate Gradle Wrapper
+  #       uses: gradle/wrapper-validation-action@v1
+
+  #     - name: Run Unit tests
+  #       run: bash ./gradlew test --stacktrace
       
-      - name: Upload test report
-        uses: actions/upload-artifact@v3.1.1
-        with:
-          name: unit_test_report
-          path: app/build/reports/tests/testDebugUnitTest/
+  #     - name: Upload test report
+  #       uses: actions/upload-artifact@v3.1.1
+  #       with:
+  #         name: unit_test_report
+  #         path: app/build/reports/tests/testDebugUnitTest/
 
   # instrumentation-test:
   #   needs: [unit-test]
@@ -88,7 +89,7 @@ jobs:
 
   static-code-analysis:
    # needs: [instrumentation-test]
-    needs: [unit-test]
+   # needs: [unit-test]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the code
