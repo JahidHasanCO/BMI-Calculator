@@ -88,41 +88,42 @@ jobs:
   #         name: instrumentation_test_report
   #         path: app/build/reports/androidTests/connected/
 
-  # static-code-analysis:
-  #   name: Build and analyze
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #       with:
-  #         fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-  #     - name: Set up JDK 11
-  #       uses: actions/setup-java@v1
-  #       with:
-  #         java-version: 11
-  #     - name: Cache SonarCloud packages
-  #       uses: actions/cache@v1
-  #       with:
-  #         path: ~/.sonar/cache
-  #         key: ${{ runner.os }}-sonar
-  #         restore-keys: ${{ runner.os }}-sonar
-  #     - name: Cache Gradle packages
-  #       uses: actions/cache@v1
-  #       with:
-  #         path: ~/.gradle/caches
-  #         key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
-  #         restore-keys: ${{ runner.os }}-gradle
-  #     - name: Grant Permission to Execute
-  #       run: chmod +x gradlew
-  #     - name: Build and analyze
-  #       env:
-  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-  #         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-  #       run: ./gradlew build sonarqube --info
+  static-code-analysis:
+    name: SonarCloud Build and analyze
+    needs: [unit-test]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+      - name: Set up JDK 11
+        uses: actions/setup-java@v3.8.0
+        with:
+          java-version: 11
+      - name: Cache SonarCloud packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.sonar/cache
+          key: ${{ runner.os }}-sonar
+          restore-keys: ${{ runner.os }}-sonar
+      - name: Cache Gradle packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.gradle/caches
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
+          restore-keys: ${{ runner.os }}-gradle
+      - name: Grant Permission to Execute
+        run: chmod +x gradlew
+      - name: Build and analyze
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: ./gradlew build sonarqube --info
   
 
   package:
     name: Generate APK
-    needs: [unit-test]
+    needs: [static-code-analysis]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -168,6 +169,4 @@ jobs:
 
           document: app-debug.apk
           
-          
-
-
+        
