@@ -1,52 +1,31 @@
-name: Test, Review and Generate APK
+name: CI & CD
 on:
   push:
     branches: [ "master" ]
   pull_request:
-    # The branches below must be a subset of the branches above
     branches: [ "master" ]
-
+  workflow_dispatch:
+  
 permissions:
   contents: read
 
 
 jobs:
-  codacy-security-scan:
-    permissions:
-      contents: read # for actions/checkout to fetch code
-      security-events: write # for github/codeql-action/upload-sarif to upload SARIF results
-      actions: read # only required for a private repository by github/codeql-action/upload-sarif to get the Action run status
-    name: Codacy Security Scan
+  lint:
     runs-on: ubuntu-latest
     steps:
-      # Checkout the repository to the GitHub Actions runner
-      - name: Checkout code
+      - name: Checkout the code
         uses: actions/checkout@v3
 
-      # Execute Codacy Analysis CLI and generate a SARIF output with the security issues identified during the analysis
-      - name: Run Codacy Analysis CLI
-        uses: codacy/codacy-analysis-cli-action@d840f886c4bd4edc059706d09c6a1586111c540b
+      - name: Upload html test report
+        uses: actions/upload-artifact@v3.1.1
         with:
-          # Check https://github.com/codacy/codacy-analysis-cli#project-token to get your project token from your Codacy repository
-          # You can also omit the token and run the tools that support default configurations
-          project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
-          verbose: true
-          output: results.sarif
-          format: sarif
-          # Adjust severity of non-security issues
-          gh-code-scanning-compat: true
-          # Force 0 exit code to allow SARIF file generation
-          # This will handover control about PR rejection to the GitHub side
-          max-allowed-issues: 2147483647
+          name: lint.html
+          path: app/build/reports/lint-results-debug.html
 
-      # Upload the SARIF file generated in the previous step
-      - name: Upload SARIF results file
-        uses: github/codeql-action/upload-sarif@v2
-        with:
-          sarif_file: results.sarif
-
-  test:
+  unit-test:
     name: Run Unit Tests
+    needs: [lint]
     runs-on: ubuntu-latest
 
     steps:
@@ -67,9 +46,53 @@ jobs:
 
       - name: Run Unit tests
         run: bash ./gradlew test --stacktrace
-  apk:
+      
+      - name: Upload test report
+        uses: actions/upload-artifact@v3.1.1
+        with:
+          name: unit_test_report
+          path: app/build/reports/tests/testDebugUnitTest/
+
+  instrumentation-test:
+    needs: [unit-test]
+    runs-on: macos-latest
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v3
+
+      - name: Run espresso tests
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 29
+          script: ./gradlew connectedCheck
+
+      - name: Upload test report
+        uses: actions/upload-artifact@v3.1.1
+        with:
+          name: instrumentation_test_report
+          path: app/build/reports/androidTests/connected/
+
+  static-code-analysis:
+    needs: [instrumentation-test]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v3
+
+      - name: set up JDK 11
+        uses: actions/setup-java@v3.8.0
+        with:
+          java-version: 11
+          distribution: 'temurin'
+
+      - name: SonarCloud Scan
+        run: ./gradlew app:sonarqube -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  package:
       name: Generate APK
-      needs: [ test , codacy-security-scan ]
+      needs: [static-code-analysis]
       runs-on: ubuntu-latest
 
       steps:
@@ -92,9 +115,9 @@ jobs:
             name: app
             path: app/build/outputs/apk/debug/app-debug.apk
   
-  send-apk-on-telegram:
+  delevery-on-telegram:
     name: Send Apk on Telegram
-    needs: apk
+    needs: [package]
     runs-on: ubuntu-latest
     steps:
       - name: Download Stored Artifact
@@ -118,6 +141,6 @@ jobs:
             Created By @JahidHasanCo
 
           document: app-debug.apk
-          photo: https://media.giphy.com/media/A6aHBCFqlE0Rq/giphy.gif
+          
 
 
