@@ -100,6 +100,9 @@ jobs:
           java-version: 11
           distribution: 'temurin'
 
+      - name: Grant Permission to Execute
+        run: chmod +x gradlew
+        
       - name: SonarCloud Scan
         run: ./gradlew app:sonarqube -Dsonar.login=${{ secrets.SONAR_TOKEN }}
         env:
