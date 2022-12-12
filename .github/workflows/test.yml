@@ -156,8 +156,7 @@ jobs:
             Created By @JahidHasanCo
 
           document: app-debug.apk
-          document: lint.html
-          document: unit_test_report.zip
+          
           
 
 
