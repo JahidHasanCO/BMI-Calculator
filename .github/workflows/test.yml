@@ -64,24 +64,15 @@ jobs:
   instrumentation-test:
     needs: [unit-test]
     runs-on: macos-latest
-    strategy:
-      matrix:
-        api-level: [21, 23, 29 , 33]
-        target: [default, google_apis]
     steps:
       - name: checkout
         uses: actions/checkout@v3
-
       - name: Grant Permission to Execute
         run: chmod +x gradlew
-
       - name: run tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: ${{ matrix.api-level }}
-          target: ${{ matrix.target }}
-          arch: x86_64
-          profile: Nexus 6
+          api-level: 29
           script: ./gradlew connectedCheck
 
   static-code-analysis:
