@@ -138,7 +138,7 @@ jobs:
     needs: [package]
     runs-on: ubuntu-latest
     steps:
-      - name: Download Stored Artifact
+      - name: Download Apk Stored Artifact
         uses: actions/download-artifact@v3
         with:
           name: app
@@ -156,7 +156,11 @@ jobs:
             See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
             Created By @JahidHasanCo
           document: app-debug.apk
-          
+      
+      - name: Download lint.html Stored Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: lint.html
       - name: send lint report on telegram message on push
         uses: appleboy/telegram-action@master
         with:
@@ -165,7 +169,10 @@ jobs:
           message: |
             Check Lint Report
           document: lint-results-debug.html
-       
+      - name: Download unit test report Stored Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: unit_test_report
       - name: send unit test report on telegram message on push
         uses: appleboy/telegram-action@master
         with:
