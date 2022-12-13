@@ -1,10 +1,10 @@
-name: CI & CD
+name: Android CI & CD
 on:
-  # push:
-  #   branches: [ "master" ]
-  # pull_request:
-  #   branches: [ "master" ]
-  #   ypes: [opened, synchronize, reopened]
+  push:
+     branches: [ "master" ]
+  pull_request:
+     branches: [ "master" ]
+     types: [opened, synchronize, reopened]
   workflow_dispatch:
   
 permissions:
@@ -134,7 +134,7 @@ jobs:
           path: app/build/outputs/apk/debug/app-debug.apk
   
   delevery-on-telegram:
-    name: Send Apk on Telegram
+    name: Send Results on Telegram
     needs: [package]
     runs-on: ubuntu-latest
     steps:
@@ -143,7 +143,7 @@ jobs:
         with:
           name: app
 
-      - name: send telegram message on push
+      - name: send Apk on telegram message on push
         uses: appleboy/telegram-action@master
         with:
           to: ${{ secrets.TELEGRAM_TO }}
@@ -154,10 +154,27 @@ jobs:
             Commit message: ${{ github.event.commits[0].message }}
             Repository: ${{ github.repository }}
             See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
-            
-
             Created By @JahidHasanCo
-
           document: app-debug.apk
           
+      - name: send lint report on telegram message on push
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+            Check Lint Report
+          document: lint-results-debug.html
+       
+      - name: send unit test report on telegram message on push
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+            Check Lint Report
+          document: unit_test_report.zip
+          
+          
+   
           
