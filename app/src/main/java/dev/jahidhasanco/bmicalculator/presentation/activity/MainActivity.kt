@@ -96,7 +96,6 @@ class MainActivity : AppCompatActivity() {
             OnWheelChangedListener { view, _, newIndex ->
                 val text = view.getItem(newIndex)
                 height = Integer.parseInt(text.toString())
-//                Toast.makeText(this,""+ text,Toast.LENGTH_SHORT).show()
 
             }
 
@@ -127,19 +126,6 @@ class MainActivity : AppCompatActivity() {
             }, 500)
         }
 
-//        _binding.startButton.setOnClickListener {
-//            displayToast("Height: $height Weight: $weight Gender: $gender")
-//            val intent = Intent(this,ResultActivity::class.java)
-//            intent.putExtra("Height",height.toDouble())
-//            intent.putExtra("Weight",weight.toDouble())
-//            if(gender == 'M'){
-//                intent.putExtra("Gender",0)
-//            }
-//            else{
-//                intent.putExtra("Gender",1)
-//            }
-//            startActivity(intent)
-//        }
 
     }
 

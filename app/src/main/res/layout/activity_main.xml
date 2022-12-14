@@ -43,25 +43,6 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <!--        <LinearLayout-->
-                <!--            android:id="@+id/linearLayout2"-->
-                <!--            android:layout_width="match_parent"-->
-                <!--            android:layout_height="1dp"-->
-                <!--            android:background="@drawable/rounded_dash_main"-->
-                <!--            app:layout_constraintEnd_toEndOf="parent"-->
-                <!--            app:layout_constraintStart_toStartOf="parent"-->
-                <!--            app:layout_constraintTop_toBottomOf="@+id/textView"-->
-                <!--            android:orientation="horizontal">-->
-
-                <!--            <ImageView-->
-                <!--                android:layout_width="match_parent"-->
-                <!--                android:layout_height="match_parent"-->
-                <!--                android:src="@drawable/mike"-->
-                <!--                android:scaleType="fitCenter"-->
-                <!--                />-->
-
-                <!--        </LinearLayout>-->
-
                 <!--    main container    -->
                 <LinearLayout
                     android:id="@+id/bodyContainer"
@@ -123,11 +104,7 @@
                                 />
 
                         </LinearLayout>
-                        <!--                <com.sccomponents.gauges.library.ScArcGauge-->
-                        <!--                    android:layout_width="match_parent"-->
-                        <!--                    android:layout_height="match_parent"-->
-                        <!--                    android:maxLength="100"-->
-
+                       
 
                         <!--            Weight Container        />-->
 
@@ -287,20 +264,6 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/bodyContainer">
 
-
-                    <!--            <Button-->
-                    <!--                android:id="@+id/start_button"-->
-                    <!--                android:layout_width="100dp"-->
-                    <!--                android:layout_height="wrap_content"-->
-                    <!--                android:background="@drawable/round_button_blue"-->
-                    <!--                android:fontFamily="@font/larsseit_bold"-->
-                    <!--                android:text="@string/start"-->
-                    <!--                android:textSize="15sp"-->
-                    <!--                android:layout_margin="20dp"-->
-                    <!--                app:layout_constraintBottom_toBottomOf="parent"-->
-                    <!--                app:layout_constraintEnd_toEndOf="parent"-->
-                    <!--                app:layout_constraintStart_toStartOf="parent"-->
-                    <!--                app:layout_constraintTop_toTopOf="parent" />-->
 
                     <com.example.swipebutton_library.SwipeButton
                         android:id="@+id/start_button"

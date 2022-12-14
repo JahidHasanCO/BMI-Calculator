@@ -37,10 +37,6 @@ class ResultActivity : AppCompatActivity() {
             if (isGranted) shareImage() else showErrorDialog()
         }
 
-    private fun showErrorDialog() {
-
-    }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -94,15 +90,6 @@ class ResultActivity : AppCompatActivity() {
         startActivity(Intent.createChooser(intent, null))
     }
 
-//    private fun showAppNameAndLogo() = with(_binding.transactionDetails) {
-//        appIconForShare.show()
-//        appNameForShare.show()
-//    }
-//
-//    private fun hideAppNameAndLogo() = with(binding.transactionDetails) {
-//        appIconForShare.hide()
-//        appNameForShare.hide()
-//    }
 
     private fun isStoragePermissionGranted(): Boolean = ContextCompat.checkSelfPermission(
         this,
