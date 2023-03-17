@@ -117,7 +117,7 @@
                                 app:wheelSelectedArcBackgroundColor="@color/primaryColor"
                                 app:wheelSelectedTextColor="@color/white"
                                 app:wheelStartAngle="315"
-                                app:wheelTextColor="#000000"
+                                app:wheelTextColor="@color/textColorInWheel"
                                 app:wheelTextSize="14sp"
 
                                 />
@@ -269,7 +269,7 @@
                             app:wheelItemHeight="38dp"
                             app:wheelItemWidth="100dp"
                             app:wheelSelectedTextColor="@color/primaryColor"
-                            app:wheelTextColor="#CC343E45"
+                            app:wheelTextColor="@color/textColor"
                             app:wheelTextSize="15sp" />
 
 

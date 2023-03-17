@@ -7,7 +7,8 @@
     <color name="backgroundColor">#FFFFFF</color>
     <color name="backgroundColorAdditional">#F6F6F6</color>
     <color name="backgroundColorAdditional2">#F9F9F9</color>
-    <color name="textColor">#151E2B</color>
+    <color name="textColor">#343E45</color>
+    <color name="textColorInWheel">#000000</color>
     <color name="textColorAdditional">#343E45</color>
 
     <color name="purple_200">#FFBB86FC</color>
@@ -18,4 +19,8 @@
 
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="dash_start">#00811C1C</color>
+    <color name="dash_center">#E6FFFFFF</color>
+    <color name="dash_end">#99FFFFFF</color>
 </resources>

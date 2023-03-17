@@ -111,7 +111,7 @@ class MainActivity : AppCompatActivity() {
         _binding.startButton.setOnActiveListener {
             animationViewUp()
             _binding.startButton.alpha = 0f
-            Handler().postDelayed({
+            Handler(Looper.getMainLooper()).postDelayed({
 
                 val intent = Intent(this,ResultActivity::class.java)
                 intent.putExtra("Height",height.toDouble())
@@ -192,7 +192,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         if (doubleBackToExitPressedOnce) {
-            super.onBackPressed()
+            //super.onBackPressed()
+            onBackPressedDispatcher.onBackPressed()
             return
         }
 
