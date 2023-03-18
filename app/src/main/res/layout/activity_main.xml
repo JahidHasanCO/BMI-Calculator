@@ -114,7 +114,7 @@
                                 app:wheelCenterIconTint="@color/white"
                                 app:wheelDividerStrokeWidth="4dp"
                                 app:wheelMode="ANIMATE_TO_ANCHOR"
-                                app:wheelSelectedArcBackgroundColor="@color/primaryColor"
+                                app:wheelSelectedArcBackgroundColor="?attr/colorPrimary"
                                 app:wheelSelectedTextColor="@color/white"
                                 app:wheelStartAngle="315"
                                 app:wheelTextColor="@color/textColorInWheel"
@@ -268,7 +268,7 @@
                             app:wheelItemCount="9"
                             app:wheelItemHeight="38dp"
                             app:wheelItemWidth="100dp"
-                            app:wheelSelectedTextColor="@color/primaryColor"
+                            app:wheelSelectedTextColor="?attr/colorPrimary"
                             app:wheelTextColor="@color/textColor"
                             app:wheelTextSize="15sp" />
 
@@ -316,7 +316,7 @@
                         app:button_width="40dp"
                         app:has_active_status="false"
                         app:inner_text="...."
-                        app:inner_text_color="@color/primaryColor"
+                        app:inner_text_color="?attr/colorPrimary"
                         app:inner_text_gravity="center"
                         app:inner_text_size="50sp"
                         app:inner_text_top_padding="-33dp"

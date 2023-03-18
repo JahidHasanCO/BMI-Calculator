@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/backgroundColorAdditional"
+        tools:context=".presentation.activity.MainActivity">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:fontFamily="@font/larsseit_bold"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="@string/app_name"
+            android:textColor="@color/textColor"
+            android:textSize="22sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <!--    main container    -->
+        <LinearLayout
+            android:id="@+id/bodyContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView">
+
+            <!--            gender and weight container-->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="5dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_dash_main2"
+                    android:elevation="25dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/larsseit_medium"
+                        android:gravity="center"
+                        android:text="GENDER"
+                        android:textColor="@color/textColor"
+                        android:textSize="16sp" />
+
+                    <me.sujanpoudel.wheelview.WheelView
+                        android:id="@+id/gender_wheel_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:elevation="0dp"
+                        app:wheelAnchorAngle="270"
+                        app:wheelAnimationDuration="800"
+                        app:wheelArcBackgroundColor="@color/backgroundColorAdditional2"
+                        app:wheelCenterIcon="@drawable/ic_user"
+                        app:wheelCenterIconPadding="1dp"
+                        app:wheelCenterIconTint="@color/white"
+                        app:wheelDividerStrokeWidth="4dp"
+                        app:wheelMode="ANIMATE_TO_ANCHOR"
+                        app:wheelSelectedArcBackgroundColor="?attr/colorPrimary"
+                        app:wheelSelectedTextColor="@color/white"
+                        app:wheelStartAngle="315"
+                        app:wheelTextColor="@color/textColorInWheel"
+                        app:wheelTextSize="14sp"
+
+                        />
+
+                </LinearLayout>
+
+
+                <!--            Weight Container        />-->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_dash_main"
+                    android:elevation="25dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:paddingBottom="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/larsseit_medium"
+                            android:gravity="bottom"
+                            android:text="WEIGHT"
+                            android:textColor="@color/textColor"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/larsseit_medium"
+                            android:gravity="bottom"
+                            android:paddingBottom="3.4dp"
+                            android:text="(KG)"
+                            android:textColor="@color/textColorAdditional"
+                            android:textSize="8sp" />
+
+                    </LinearLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="20dp"
+                        android:background="@drawable/rounded_dash"
+                        android:orientation="vertical">
+
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/weightRecyclerBtn"
+                            android:layout_width="match_parent"
+                            android:layout_height="80dp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:clipToPadding="true"
+                            android:paddingStart="32dp"
+                            android:paddingEnd="32dp"
+                            android:textSize="15sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/imageView"
+                            android:layout_width="18dp"
+                            android:layout_height="11dp"
+                            android:layout_gravity="center"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/ic_triangle"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+            <!--            Height Container-->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="20dp"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_dash_main"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/linearLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingBottom="10dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/larsseit_medium"
+                        android:gravity="bottom"
+                        android:text="HEIGHT"
+                        android:textColor="@color/textColor"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/larsseit_medium"
+                        android:gravity="bottom"
+                        android:paddingBottom="3.4dp"
+                        android:text="(CM)"
+                        android:textColor="@color/textColorAdditional"
+                        android:textSize="8sp" />
+
+                </LinearLayout>
+
+                <com.cncoderx.wheelview.WheelView
+                    android:id="@+id/height_wheel"
+                    android:layout_width="match_parent"
+                    android:layout_height="165dp"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+                    app:wheelCyclic="true"
+                    app:wheelDividerColor="@color/backgroundColorAdditional2"
+                    app:wheelEntries="@array/default_array"
+                    app:wheelHighlightColor="@color/backgroundColor"
+                    app:wheelItemCount="4"
+                    app:wheelItemHeight="38dp"
+                    app:wheelItemWidth="100dp"
+                    app:wheelSelectedTextColor="?attr/colorPrimary"
+                    app:wheelTextColor="@color/textColor"
+                    app:wheelTextSize="15sp" />
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/footerContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="1dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/height_wheel">
+
+                    <com.example.swipebutton_library.SwipeButton
+                        android:id="@+id/start_button"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:elevation="20dp"
+                        app:button_background_drawable="@drawable/circular_white_background"
+                        app:button_background_padding="0dp"
+                        app:button_background_src="@drawable/ic_pacman"
+                        app:button_background_tint="@color/backgroundColorAdditional"
+                        app:button_height="70dp"
+                        app:button_width="40dp"
+                        app:has_active_status="false"
+                        app:inner_text="...."
+                        app:inner_text_color="?attr/colorPrimary"
+                        app:inner_text_gravity="center"
+                        app:inner_text_size="50sp"
+                        app:inner_text_top_padding="-33dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:outer_background_drawable="@drawable/circular_white_background"
+                        app:outer_background_height="40dp"
+                        app:trail_enabled="false" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
