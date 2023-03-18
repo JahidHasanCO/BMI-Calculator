@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="primaryColor">#4D7CF2</color>
-    <color name="backgroundColor">#000000</color>
-    <color name="backgroundColorAdditional">#090909</color>
+    <color name="backgroundColor">#090909</color>
+    <color name="backgroundColorAdditional">#000000</color>
     <color name="backgroundColorAdditional2">#060606</color>
     <color name="textColorInWheel">#FFFFFF</color>
-    <color name="textColor">#cbc1ba</color>
-    <color name="textColorAdditional">#cbc1ba</color>
+    <color name="textColor">#E8E3DF</color>
+    <color name="textColorAdditional">#D6CEC8</color>
 
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
