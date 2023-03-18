@@ -226,7 +226,7 @@
                     app:wheelCyclic="true"
                     app:wheelDividerColor="@color/backgroundColorAdditional2"
                     app:wheelEntries="@array/default_array"
-                    app:wheelHighlightColor="@color/backgroundColor"
+                    app:wheelHighlightColor="#00FFFFFF"
                     app:wheelItemCount="4"
                     app:wheelItemHeight="38dp"
                     app:wheelItemWidth="100dp"
