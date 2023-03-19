@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">BMI Calculator</string>
-    <string name="start">Start</string>
-    <string name="normal_bmi_weight_range_for_the_height_18_5_24_9">Normal BMI weight range for the height: 18.5 - 24.9</string>
+    <string name="normal_bmi_weight_range_for_the_height_18_5_24_9">Normal BMI weight range for the height: 18.5 – 24.9</string>
 
     <string-array name="default_array">
         <item name="1">1</item>

@@ -71,7 +71,6 @@
     <color name="textColorInWheel">#000000</color>
     <color name="textColorAdditional">#343E45</color>
 
-    <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
     <color name="dash_start">#00811C1C</color>

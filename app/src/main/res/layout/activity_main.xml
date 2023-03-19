@@ -123,11 +123,6 @@
                                 />
 
                         </LinearLayout>
-                        <!--                <com.sccomponents.gauges.library.ScArcGauge-->
-                        <!--                    android:layout_width="match_parent"-->
-                        <!--                    android:layout_height="match_parent"-->
-                        <!--                    android:maxLength="100"-->
-
 
                         <!--            Weight Container        />-->
 

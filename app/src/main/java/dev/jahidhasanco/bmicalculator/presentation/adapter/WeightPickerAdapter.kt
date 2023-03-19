@@ -1,6 +1,7 @@
 package dev.jahidhasanco.bmicalculator.presentation.adapter
 
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -34,9 +35,10 @@ class WeightPickerAdapter(private val context: Context, private var dataList: Li
         return dataList.size
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun swapData(newData: List<String>) {
         dataList = newData
-        notifyDataSetChanged()
+        this.notifyDataSetChanged()
     }
 
      class TextVH(itemView: View) : RecyclerView.ViewHolder(itemView) {

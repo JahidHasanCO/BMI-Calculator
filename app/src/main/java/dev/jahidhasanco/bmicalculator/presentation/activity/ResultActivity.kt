@@ -9,6 +9,7 @@ import android.content.pm.PackageManager
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ShareCompat
@@ -39,7 +40,7 @@ class ResultActivity : AppCompatActivity() {
         }
 
     private fun showErrorDialog() {
-
+        displayToast("Please allow External Storage Read and Write Permissions.")
     }
 
 
@@ -78,9 +79,7 @@ class ResultActivity : AppCompatActivity() {
         }
 
         // unHide the app logo and name
-//        showAppNameAndLogo()
         val imageURI = _binding.detailView.drawToBitmap().let { bitmap ->
- //           hideAppNameAndLogo()
             saveBitmap(this, bitmap)
         } ?: run {
             displayToast("Error occurred!")
@@ -95,44 +94,10 @@ class ResultActivity : AppCompatActivity() {
         startActivity(Intent.createChooser(intent, null))
     }
 
-//    private fun showAppNameAndLogo() = with(_binding.transactionDetails) {
-//        appIconForShare.show()
-//        appNameForShare.show()
-//    }
-//
-//    private fun hideAppNameAndLogo() = with(binding.transactionDetails) {
-//        appIconForShare.hide()
-//        appNameForShare.hide()
-//    }
-
     private fun isStoragePermissionGranted(): Boolean = ContextCompat.checkSelfPermission(
         this,
         Manifest.permission.WRITE_EXTERNAL_STORAGE
     ) == PackageManager.PERMISSION_GRANTED
-
-
-//    private fun shareText() = with(binding) {
-//        val shareMsg = getString(
-//            3,
-//            ""
-//            R.string.share_message,
-//            transactionDetails.title.text.toString(),
-//            transactionDetails.amount.text.toString(),
-//            transactionDetails.type.text.toString(),
-//            transactionDetails.tag.text.toString(),
-//            transactionDetails.date.text.toString(),
-//            transactionDetails.note.text.toString(),
-//            transactionDetails.createdAt.text.toString()
-//        )
-//
-//        val intent = ShareCompat.IntentBuilder(Activity())
-//            .setType("text/plain")
-//            .setText(shareMsg)
-//            .intent
-//
-//        startActivity(Intent.createChooser(intent, null))
-//    }
-
 
     private fun backPreviousPage(){
         animationViewUp()
