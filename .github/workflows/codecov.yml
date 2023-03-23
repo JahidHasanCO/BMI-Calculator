@@ -10,10 +10,44 @@ on:
 permissions:
   contents: read
 
-
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  scan:
-    runs-on: ubuntu-latest
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: macos-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - name: Upload coverage reports to Codecov
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
+      - name: Grant Permission to Execute
+        run: chmod +x gradlew
+        
+       # Execute unit tests
+      - name: Unit Test with Android Emulator Runner
+        uses: ReactiveCircus/android-emulator-runner@v2.28.0
+        with: 
+            api-level: 29
+            script: ./gradlew connectedCheck 
+
+       # run: ./gradlew testDebugUnitTest
+
+      - name: generate report
+        uses: actions/upload-artifact@v3
+        with:
+          name: report 
+          path: app/build/reports/coverage/debug
+
+
+      - name: Download Test Reports Folder
+        uses: actions/download-artifact@v3
+        with:
+          name: report
+          path: app/build/reports/coverage/debug
+
+      - name: Upload Test Report
         uses: codecov/codecov-action@v3
+        with:
+          files: "app/build/reports/coverage/debug/report.xml"
