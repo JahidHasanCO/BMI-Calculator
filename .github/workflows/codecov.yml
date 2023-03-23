@@ -1,0 +1,19 @@
+name: Codecov Scan
+on:
+  push:
+     branches: [ "master" ]
+  pull_request:
+     branches: [ "master" ]
+     types: [opened, synchronize, reopened]
+  workflow_dispatch:
+  
+permissions:
+  contents: read
+
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v3
