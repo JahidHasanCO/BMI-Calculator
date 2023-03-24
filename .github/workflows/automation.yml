@@ -1,18 +1,17 @@
 name: Android CI & CD
 on:
   push:
-     branches: [ "master" ]
+    branches: [ "master" ]
   pull_request:
-     branches: [ "master" ]
-     types: [opened, synchronize, reopened]
+    branches: [ "master" ]
+    types: [opened, synchronize, reopened]
   workflow_dispatch:
-  
+
 permissions:
   contents: read
 
 
 jobs:
-
   lint:
     runs-on: ubuntu-latest
     steps:
@@ -54,7 +53,7 @@ jobs:
 
       - name: Run Unit tests
         run: bash ./gradlew test --stacktrace
-      
+
       - name: Upload test report
         uses: actions/upload-artifact@v3.1.1
         with:
@@ -78,6 +77,26 @@ jobs:
         with:
           api-level: 29
           script: ./gradlew connectedCheck
+
+      - name: generate report
+          uses: actions/upload-artifact@v3
+          with:
+            name: report
+            path: app/build/reports/coverage/debug
+
+
+            - name: Download Test Reports Folder
+              uses: actions/download-artifact@v3
+              with:
+                name: report
+                path: app/build/reports/coverage/debug
+
+            - name: Upload Test Report
+              uses: codecov/codecov-action@v3
+              with:
+                files: "app/build/reports/coverage/debug/report.xml"
+
+
 
   static-code-analysis:
     name: Build and analyze
@@ -110,3 +129,48 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: ./gradlew build sonarqube --info
+
+  package:
+    name: Generate APK
+    needs: [static-code-analysis]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Java JDK
+        uses: actions/setup-java@v3.8.0
+        with:
+          java-version: 11
+          distribution: 'temurin'
+      - name: Grant Permission to Execute
+        run: chmod +x gradlew
+      - name: Build debug APK
+        run: bash ./gradlew assembleDebug --stacktrace
+      - name: Upload APK to Github Artifacts
+        uses: actions/upload-artifact@v3.1.1
+        with:
+          name: app
+          path: app/build/outputs/apk/debug/app-debug.apk
+
+    delevery-on-telegram:
+      name: Send Results on Telegram
+      needs: [ package ]
+      runs-on: ubuntu-latest
+      steps:
+        - name: Download Apk Stored Artifact
+          uses: actions/download-artifact@v3
+          with:
+            name: app
+
+        - name: send Apk on telegram message on push
+          uses: appleboy/telegram-action@master
+          with:
+            to: ${{ secrets.TELEGRAM_TO }}
+            token: ${{ secrets.TELEGRAM_TOKEN }}
+            message: |
+              Hi Guys,
+              ${{ github.actor }} created commit:
+              Commit message: ${{ github.event.commits[0].message }}
+              Repository: ${{ github.repository }}
+              See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
+              Created By @JahidHasanCo
+            document: app-debug.apk

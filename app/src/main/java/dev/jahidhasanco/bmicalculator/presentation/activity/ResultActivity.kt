@@ -1,7 +1,6 @@
 package dev.jahidhasanco.bmicalculator.presentation.activity
 
 
-
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -9,7 +8,6 @@ import android.content.pm.PackageManager
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ShareCompat
@@ -28,7 +26,7 @@ class ResultActivity : AppCompatActivity() {
     private lateinit var binding: ActivityResultBinding
     private val _binding get() = binding
 
-    private var weight: Double =1.0
+    private var weight: Double = 1.0
     private var height: Double = 1.0
     private var result: Double = 0.0
     private var gender: Int = 0
@@ -99,10 +97,11 @@ class ResultActivity : AppCompatActivity() {
         Manifest.permission.WRITE_EXTERNAL_STORAGE
     ) == PackageManager.PERMISSION_GRANTED
 
-    private fun backPreviousPage(){
+    private fun backPreviousPage() {
         animationViewUp()
         Handler(Looper.getMainLooper()).postDelayed({
             startActivity(Intent(this, MainActivity::class.java))
+            finish()
         }, 600)
 
     }
@@ -161,7 +160,8 @@ class ResultActivity : AppCompatActivity() {
                 .start()
             bmiText.animate().translationY(-250f).alpha(0f).setDuration(500).setStartDelay(100)
                 .start()
-            bmiTextNormal.animate().translationY(-250f).alpha(0f).setDuration(500).setStartDelay(150)
+            bmiTextNormal.animate().translationY(-250f).alpha(0f).setDuration(500)
+                .setStartDelay(150)
                 .start()
             deleteBtn.animate().translationY(-250f).alpha(0f).setDuration(300).setStartDelay(200)
                 .start()
@@ -215,8 +215,10 @@ class ResultActivity : AppCompatActivity() {
         result = ((weight / (height * height)) * 10000)
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         backPreviousPage()
     }
+
 
 }
