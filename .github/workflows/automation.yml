@@ -1,63 +1,67 @@
-name: CI/CD Automation
-'on':
+name: Android CI & CD
+on:
   push:
-    branches:
-      - master
+    branches: [ "master" ]
   pull_request:
-    branches:
-      - master
-    types:
-      - opened
-      - synchronize
-      - reopened
-  workflow_dispatch: null
+    branches: [ "master" ]
+    types: [opened, synchronize, reopened]
+  workflow_dispatch:
+
 permissions:
   contents: read
+
+
 jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the code
         uses: actions/checkout@v3
+
       - name: Grant Permission to Execute
         run: chmod +x gradlew
+
       - name: Run lint
         run: ./gradlew lintDebug
+
       - name: Upload html test report
         uses: actions/upload-artifact@v3.1.1
         with:
           name: lint.html
           path: app/build/reports/lint-results-debug.html
+
   unit-test:
     name: Run Unit Tests
-    needs:
-      - lint
+    needs: [lint]
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v3
+
+      # Cache gradle
       - name: Cache Gradle and wrapper
         uses: actions/cache@v3
         with:
           path: |
             ~/.gradle/caches
             ~/.gradle/wrapper
-          key: >-
-            cache-${{ runner.os }}-${{ matrix.jdk }}-gradle-${{
-            hashFiles('**/*.gradle*') }}
+          key: cache-${{ runner.os }}-${{ matrix.jdk }}-gradle-${{ hashFiles('**/*.gradle*') }}
           restore-keys: |
             ${{ runner.os }}-gradle-
       - name: Validate Gradle Wrapper
         uses: gradle/wrapper-validation-action@v1
+
       - name: Run Unit tests
         run: bash ./gradlew test --stacktrace
+
       - name: Upload test report
         uses: actions/upload-artifact@v3.1.1
         with:
           name: unit_test_report
           path: app/build/reports/tests/testDebugUnitTest/
+
   instrumentation-test:
-    needs:
-      - unit-test
+    needs: [unit-test]
     runs-on: macos-latest
     steps:
       - name: checkout
@@ -73,29 +77,31 @@ jobs:
         with:
           api-level: 29
           script: ./gradlew connectedCheck
+
       - name: generate report
-        uses: actions/upload-artifact@v3
-        with:
-          name: report
-          path: app/build/reports/coverage/debug
+          uses: actions/upload-artifact@v3
+          with:
+            name: report
+            path: app/build/reports/coverage/debug
       - name: Download Test Reports Folder
-        uses: actions/download-artifact@v3
-        with:
-          name: report
-          path: app/build/reports/coverage/debug
+          uses: actions/download-artifact@v3
+          with:
+            name: report
+            path: app/build/reports/coverage/debug
+
       - name: Upload Test Report
-        uses: codecov/codecov-action@v3
-        with:
-          files: app/build/reports/coverage/debug/report.xml
+          uses: codecov/codecov-action@v3
+          with:
+            files: "app/build/reports/coverage/debug/report.xml"
+
   static-code-analysis:
     name: Build and analyze
-    needs:
-      - unit-test
+    needs: [unit-test]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
         with:
-          fetch-depth: 0
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
       - name: Set up JDK 11
         uses: actions/setup-java@v1
         with:
@@ -104,25 +110,25 @@ jobs:
         uses: actions/cache@v1
         with:
           path: ~/.sonar/cache
-          key: '${{ runner.os }}-sonar'
-          restore-keys: '${{ runner.os }}-sonar'
+          key: ${{ runner.os }}-sonar
+          restore-keys: ${{ runner.os }}-sonar
       - name: Cache Gradle packages
         uses: actions/cache@v1
         with:
           path: ~/.gradle/caches
-          key: '${{ runner.os }}-gradle-${{ hashFiles(''**/*.gradle'') }}'
-          restore-keys: '${{ runner.os }}-gradle'
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
+          restore-keys: ${{ runner.os }}-gradle
       - name: Grant Permission to Execute
         run: chmod +x gradlew
       - name: Build and analyze
         env:
-          GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
-          SONAR_TOKEN: '${{ secrets.SONAR_TOKEN }}'
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: ./gradlew build sonarqube --info
+
   package:
     name: Generate APK
-    needs:
-      - static-code-analysis
+    needs: [static-code-analysis]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -130,7 +136,7 @@ jobs:
         uses: actions/setup-java@v3.8.0
         with:
           java-version: 11
-          distribution: temurin
+          distribution: 'temurin'
       - name: Grant Permission to Execute
         run: chmod +x gradlew
       - name: Build debug APK
@@ -140,10 +146,10 @@ jobs:
         with:
           name: app
           path: app/build/outputs/apk/debug/app-debug.apk
+
     delevery-on-telegram:
       name: Send Results on Telegram
-      needs:
-        - package
+      needs: [ package ]
       runs-on: ubuntu-latest
       steps:
         - name: Download Apk Stored Artifact
@@ -153,19 +159,13 @@ jobs:
         - name: send Apk on telegram message on push
           uses: appleboy/telegram-action@master
           with:
-            to: '${{ secrets.TELEGRAM_TO }}'
-            token: '${{ secrets.TELEGRAM_TOKEN }}'
-            message: >
+            to: ${{ secrets.TELEGRAM_TO }}
+            token: ${{ secrets.TELEGRAM_TOKEN }}
+            message: |
               Hi Guys,
-
               ${{ github.actor }} created commit:
-
               Commit message: ${{ github.event.commits[0].message }}
-
               Repository: ${{ github.repository }}
-
-              See changes: https://github.com/${{ github.repository
-              }}/commit/${{github.sha}}
-
+              See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
               Created By @JahidHasanCo
             document: app-debug.apk
