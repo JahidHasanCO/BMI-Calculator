@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() {
             focusedIndex = 2
         }
         _binding.genderWheelView.selectListener = {
-           gender = titlesOfGender[it][0]
+            gender = titlesOfGender[it][0]
         }
 
 
@@ -111,14 +111,13 @@ class MainActivity : AppCompatActivity() {
             _binding.startButton.alpha = 0f
             Handler(Looper.getMainLooper()).postDelayed({
 
-                val intent = Intent(this,ResultActivity::class.java)
-                intent.putExtra("Height",height.toDouble())
-                intent.putExtra("Weight",weight.toDouble())
-                if(gender == 'M'){
-                    intent.putExtra("Gender",0)
-                }
-                else{
-                    intent.putExtra("Gender",1)
+                val intent = Intent(this, ResultActivity::class.java)
+                intent.putExtra("Height", height.toDouble())
+                intent.putExtra("Weight", weight.toDouble())
+                if (gender == 'M') {
+                    intent.putExtra("Gender", 0)
+                } else {
+                    intent.putExtra("Gender", 1)
                 }
                 startActivity(intent)
 
@@ -152,10 +151,14 @@ class MainActivity : AppCompatActivity() {
 
 
 
-            bodyContainer.animate().translationY(0f).alpha(1f).setDuration(500).setStartDelay(300).start()
-            footerContainer.animate().translationY(0f).alpha(1f).setDuration(500).setStartDelay(400).start()
-            heightWheel.animate().translationY(0f).alpha(1f).setDuration(500).setStartDelay(450).start()
-            weightRecyclerBtn.animate().translationX(0f).alpha(1f).setDuration(500).setStartDelay(500).start()
+            bodyContainer.animate().translationY(0f).alpha(1f).setDuration(500).setStartDelay(300)
+                .start()
+            footerContainer.animate().translationY(0f).alpha(1f).setDuration(500).setStartDelay(400)
+                .start()
+            heightWheel.animate().translationY(0f).alpha(1f).setDuration(500).setStartDelay(450)
+                .start()
+            weightRecyclerBtn.animate().translationX(0f).alpha(1f).setDuration(500)
+                .setStartDelay(500).start()
 
         }
     }
@@ -165,10 +168,14 @@ class MainActivity : AppCompatActivity() {
         _binding.apply {
 
             textView.animate().translationY(0f).alpha(0f).setDuration(50).setStartDelay(0).start()
-            bodyContainer.animate().translationY(-250f).alpha(0f).setDuration(500).setStartDelay(0).start()
-            footerContainer.animate().translationY(-250f).alpha(0f).setDuration(500).setStartDelay(50).start()
-            heightWheel.animate().translationY(-250f).alpha(0f).setDuration(500).setStartDelay(100).start()
-            weightRecyclerBtn.animate().translationX(-250f).alpha(0f).setDuration(500).setStartDelay(150).start()
+            bodyContainer.animate().translationY(-250f).alpha(0f).setDuration(500).setStartDelay(0)
+                .start()
+            footerContainer.animate().translationY(-250f).alpha(0f).setDuration(500)
+                .setStartDelay(50).start()
+            heightWheel.animate().translationY(-250f).alpha(0f).setDuration(500).setStartDelay(100)
+                .start()
+            weightRecyclerBtn.animate().translationX(-250f).alpha(0f).setDuration(500)
+                .setStartDelay(150).start()
 
         }
     }
@@ -176,7 +183,6 @@ class MainActivity : AppCompatActivity() {
     override fun onBackPressed() {
         if (doubleBackToExitPressedOnce) {
             onBackPressedDispatcher.onBackPressed()
-            return
         }
 
         this.doubleBackToExitPressedOnce = true
