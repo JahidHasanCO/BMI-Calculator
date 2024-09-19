@@ -36,6 +36,7 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    namespace = "dev.jahidhasanco.bmicalculator"
     android.buildFeatures.dataBinding=true
 
 }
